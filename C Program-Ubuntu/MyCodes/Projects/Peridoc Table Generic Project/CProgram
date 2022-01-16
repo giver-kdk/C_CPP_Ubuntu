@@ -1,0 +1,4 @@
+Explain Algorith development.
+An algorithm is a step by step description of method to solve a problem. Its is an effective procedure for solving a problem in a finite number of steps.Algorithm maintains sequences of computer instructions required to solve a problem in such a way that if the instructions are executed in the specified sequence, the desired result is obtained.
+Explain Sequence.
+Sequence means that each step or process in the alogorithm is executed in the specified order. Each process must be the proper otherwise the algorithm will fail. A previous step must be executed before any other next steps.
