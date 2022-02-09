@@ -3,9 +3,10 @@
 #include<iostream>
 using namespace std;
 
-int find_area(int length, const int breadth = 2)
+int find_area(int length, const int breadth)
 {
 	int area = length *  breadth;
+	// breadth++;				// This is not allowed by compiler since breadth is constant argument
 	return area;
 }
 int main()
