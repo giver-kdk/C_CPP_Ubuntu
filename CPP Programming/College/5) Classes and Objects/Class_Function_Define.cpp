@@ -6,6 +6,9 @@ using namespace std;
 // Create class with class name as student
 class student
 {
+	private:
+		int marks;
+		void showResult();
 	public:
 		string name;
 		int roll;
@@ -19,19 +22,13 @@ class student
 			cin >> roll;
 			cout << "Enter section: ";
 			cin >> section;
+			cout << "Enter marks: ";
+			cin >> marks;
 		}
 		// Function declaration/prototyping inside the class
 		void printDetail();
 		void printNameRoll();
-};
-
-// Class member function definition outside the class
-void student :: printDetail()	// Scope resolution operator(::) is required after class name
-{
-	cout << "Name: " << name << endl;
-	cout << "Roll No.: " << roll << endl;
-	cout << "Section: " << section << endl;
-}
+}stu2, stu3;
 
 int main()
 {
@@ -41,13 +38,35 @@ int main()
 	stu1.printDetail();
 
 	cout << "\n" << endl;
-
+	// stu1.showResult();				// Private functon not allowed!
 	stu1.printNameRoll();
 	return 0;
 }
+// Class member function definition outside the class
+void student :: printDetail()	// Scope resolution operator(::) is required after class name
+{
+	cout << "Name: " << name << endl;
+	cout << "Roll No.: " << roll << endl;
+	cout << "Section: " << section << endl;
+	// Nesting class member function
+	showResult();	
+}
+
 // Defining class member function below 'main()'
 void student :: printNameRoll()
 {
 	cout << "Name: " << name << endl;
 	cout << "Roll No.: " << roll << endl;
+}
+// Defining private class member function outside the class
+void student :: showResult()
+{
+	if(marks >= 40)
+	{
+		cout << "PASS" << endl;
+	}
+	else
+	{
+		cout << "FAIL" << endl;
+	}
 }
