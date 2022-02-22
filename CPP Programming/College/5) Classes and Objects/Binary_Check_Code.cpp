@@ -1,10 +1,10 @@
-// Program to check binary numbers and also find one's compliment
+// Program to check Binary numbers and also find one's compliment
 #include <iostream>
 #include <stdlib.h>
 #include <string>
 using namespace std;
 
-class binary
+class Binary
 {
 	private:
 		string str;
@@ -22,7 +22,7 @@ int main()
 	b1.onesComp();	
 	return 0;
 }
-void binary :: checkBinary()
+void Binary :: checkBinary()
 {
 	int i;
 	for(i = 0; i < str.length(); i++)
@@ -40,19 +40,19 @@ void binary :: checkBinary()
 	cout << "Input is Binary Number" << endl;
 }
 
-void binary :: readData()
+void Binary :: readData()
 {
-	cout << "Enter any binary number: ";
+	cout << "Enter any Binary number: ";
 	getline(cin, str);
 	checkBinary();
 }
 
-void binary :: display()
+void Binary :: display()
 {
 	cout << "Your number is: " << str << endl;
 }
 
-void binary :: onesComp()
+void Binary :: onesComp()
 {
 	int i;
 	for(i = 0; i < str.length(); i++)

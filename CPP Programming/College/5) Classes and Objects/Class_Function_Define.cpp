@@ -3,8 +3,8 @@
 #include <string>
 using namespace std;
 
-// Create class with class name as student
-class student
+// Create class with class name as Student
+class Student
 {
 	private:
 		int marks;
@@ -16,7 +16,7 @@ class student
 		// Function definition inside the class
 		void inputDetail()
 		{
-			cout << "Enter student name: ";
+			cout << "Enter Student name: ";
 			getline(cin, name);
 			cout << "Enter roll number: ";
 			cin >> roll;
@@ -32,8 +32,8 @@ class student
 
 int main()
 {
-	// Create 'stu1' object of class 'student' 
-	student stu1;
+	// Create 'stu1' object of class 'Student' 
+	Student stu1;
 	stu1.inputDetail();
 	stu1.printDetail();
 
@@ -43,7 +43,7 @@ int main()
 	return 0;
 }
 // Class member function definition outside the class
-void student :: printDetail()	// Scope resolution operator(::) is required after class name
+void Student :: printDetail()	// Scope resolution operator(::) is required after class name
 {
 	cout << "Name: " << name << endl;
 	cout << "Roll No.: " << roll << endl;
@@ -53,13 +53,13 @@ void student :: printDetail()	// Scope resolution operator(::) is required after
 }
 
 // Defining class member function below 'main()'
-void student :: printNameRoll()
+void Student :: printNameRoll()
 {
 	cout << "Name: " << name << endl;
 	cout << "Roll No.: " << roll << endl;
 }
 // Defining private class member function outside the class
-void student :: showResult()
+void Student :: showResult()
 {
 	if(marks >= 40)
 	{

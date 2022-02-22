@@ -113,7 +113,7 @@ int main()
 			system("mpg123 Audio/okaySure.mp3");
 			system("clear");
 		}
-		else if((command == "how areyou?"))
+		else if((command == "how are you?"))
 		{
 			system("mpg123 Audio/iAmFine.mp3");
 			system("mpg123 Audio/howAreYou.mp3");

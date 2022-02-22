@@ -3,7 +3,6 @@ a) For non-century years it should be exactly divisible by 4.
 b) For century years it should be exactly divisible 400.
 Write a program to check a year for leap. */
 #include <stdio.h>
-#include <conio.h>
 
 int main()
 {

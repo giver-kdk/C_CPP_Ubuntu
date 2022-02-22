@@ -4,8 +4,8 @@
 #include <string>
 using namespace std;
 
-// Create class with class name as employee
-class employee	
+// Create class with class name as Employee
+class Employee	
 {
 	// Private members can only be accessed from class methods/functions
 	private:
@@ -21,20 +21,20 @@ class employee
 		string position;
 		void enterInfo()
 		{
-			cout << "Enter employee name: ";
+			cout << "Enter Employee name: ";
 			getline(cin, name);
-			cout << "Enter employee id: ";
+			cout << "Enter Employee id: ";
 			// 'id' is private. It is being accessed from class function
 			cin >> id;		
 			cin.ignore();						// Clears buffer memory
-			cout << "Enter employee position: ";
+			cout << "Enter Employee position: ";
 			getline(cin, position);
-			cout << "Enter employee salary: ";
+			cout << "Enter Employee salary: ";
 			cin >> salary;
 		}
 		void printInfo()
 		{
-			cout << "Details of the employee are: " << endl;
+			cout << "Details of the Employee are: " << endl;
 			cout << "Name: " << name << endl;
 			cout << "ID: " << id << endl;
 			cout << "Position: " << position << endl;
@@ -50,8 +50,8 @@ class employee
 
 int main()
 {
-	// Create 'emp1' object of class 'employee' 
-	employee emp1;
+	// Create 'emp1' object of class 'Employee' 
+	Employee emp1;
 	// Directly accessing public function is allowed
 	emp1.enterInfo();
 	emp1.printInfo();

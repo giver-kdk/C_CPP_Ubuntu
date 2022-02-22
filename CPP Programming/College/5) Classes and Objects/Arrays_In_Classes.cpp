@@ -2,12 +2,12 @@
 #include <iostream>
 using namespace std;
 
-class student
+class Student
 {
 	private:
 	// Array variable
 		int marks[10];
-		int subjectsNum;
+		int subjectsNum = 5;
 	public:
 		string name;
 		int roll;
@@ -17,16 +17,16 @@ class student
 };
 int main()
 {
-	student st1;
+	Student st1;
 	st1.input_detail();
 	st1.display_details();
 	st1.find_percentage();
 	return 0;
 }
 
-void student :: input_detail()
+void Student :: input_detail()
 {
-	cout << "Enter student name: ";
+	cout << "Enter Student name: ";
 	getline(cin, name);
 	cout << "Enter roll number: ";
 	cin >> roll;
@@ -40,7 +40,7 @@ void student :: input_detail()
 		cin >> marks[i];
 	}
 }
-void student :: find_percentage()
+void Student :: find_percentage()
 {
 	int i;
 	float total = 0, percentage;
@@ -52,7 +52,7 @@ void student :: find_percentage()
 	cout << "Total Marks Obtained: " << total << endl;
 	cout << "Scored Percentage: " << percentage << "%" << endl;
 }
-void student :: display_details()
+void Student :: display_details()
 {
 	cout << "Name: " << name << endl;
 	cout << "Roll No.: " << roll << endl;
