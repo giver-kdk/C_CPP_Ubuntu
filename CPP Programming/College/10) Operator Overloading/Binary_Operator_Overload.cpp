@@ -7,13 +7,14 @@ class Point
 	int value;
 
 public:
+	Point(){}						//Default Constructor for Non-Parametric Initialization
 	Point(int i) : value(i) {}
 	int get_value();
 	void operator++();
 	void operator++(int);
 	Point operator+(const Point &obj)
 	{
-		Point temp(0);						// Initializing with 0 value
+		Point temp;					
 		temp.value = value + obj.value;
 		return temp.value;
 	}
@@ -29,7 +30,7 @@ int main()
 	// p1.operator ++(5);		// Calling post-increment operator function
 	cout << "The incremented value of the point is: " << p1.get_value() << endl;
 
-	Point p2(5), p3(10), p4(0);
+	Point p2(5), p3(10), p4;
 	p4 = p2 + p3;
 	cout << "Result: " << p4.get_value() << endl;
 	return 0;
