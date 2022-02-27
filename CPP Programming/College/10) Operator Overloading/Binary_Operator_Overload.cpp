@@ -8,16 +8,11 @@ class Point
 
 public:
 	Point() {} // Default Constructor for Non-Parametric Initialization
-	Point(int i) : value(i) {}
+	Point(int i) : value(i) {}				// Assign value of 'i' to 'value'
 	int get_value();
 	void operator++();
 	void operator++(int);
-	Point operator+(const Point &obj)
-	{
-		Point temp;
-		temp.value = value + obj.value;
-		return temp.value;
-	}
+	Point operator+(const Point &obj);
 };
 int main()
 {
@@ -48,4 +43,11 @@ void Point ::operator++() // Operator overloading pre-increment ( i.e; ++i )
 void Point ::operator++(int) // Operator overloading post-increment ( i.e; ++i )
 {
 	value++;
+}
+Point Point:: operator+(const Point &obj)
+{
+	Point temp;
+	temp.value = value + obj.value;
+	// Returned object contains the result value with it
+	return temp;
 }
