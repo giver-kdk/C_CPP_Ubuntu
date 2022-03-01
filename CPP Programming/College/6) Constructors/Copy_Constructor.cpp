@@ -17,7 +17,7 @@ class Rectangle
        }
        int get_area();
 };
-Rectangle :: Rectangle(Rectangle &obj)
+Rectangle :: Rectangle(const Rectangle &obj)
 {
     length = obj.length;
     breadth = obj.breadth;

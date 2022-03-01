@@ -1,4 +1,4 @@
-// Program to demostrate use of length function 
+// Program to demostrate use of length function
 #include <iostream>
 #include <string>
 using namespace std;
