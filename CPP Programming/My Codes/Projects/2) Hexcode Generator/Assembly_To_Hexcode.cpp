@@ -8,9 +8,34 @@ using namespace std;
 char fName[20];
 
 void strupr(string &str);
-void strlwr(string &str);
-char *input(string str);
-
+// void strlwr(string &str);
+char *get_name_of(string str);
+void asm_to_hex(string instruct, string mnemonic, string operand1, string operand2)
+{
+	int row = 0, column = 0;
+	if(operand1[0] == '\0' && operand2[0] == '\0')					// Zero Operand Instruction
+	{
+		row = 2;
+		column = 19;
+		cout << "No value in operand1 and operand2" << endl;
+		string opCodeArray[row][column]
+		{
+			// Mnemonics with corresponding op-codes in an array
+			{"RET","XCHG", "SPHL", "XTHL", "PCHL", "EI", "DI", "NOP", "HLT", 
+			"RRC", "RLC", "RAR", "RAL", "CMA", "STC", "CMC", "DAA", "RIM", "SIM"},
+			{"C9", 	"EB", 	"F9", 	"E3", 	"E9", 	"FB", "F3", "00", 	"76", 
+			"0F",  "07",  "1F",	 "17", 	"2F",  "37",  "3F",	 "27", 	"20",  "30"}
+		};
+	}
+	else if((operand1[0] != '\0') && (operand2[0] == '\0'))			// One Operand Instruction
+	{
+		cout << "Value in operand1" << endl;
+	}
+	else if((operand1[0] != '\0') && (operand2[0] != '\0'))			// Two Operand Instruction
+	{
+		cout << "Value in operand1 and operand2" << endl;
+	}
+}
 
 
 
@@ -33,7 +58,7 @@ int main()
 	mnemonic.resize(20);						// Setting string size
 	char data = 's';
 	
-	FILE *fp = fopen(input(file_name), "r");
+	FILE *fp = fopen(get_name_of(file_name), "r");
 	if(fp == NULL)
 	{
 		cout << "Error Opening file..." << endl;
@@ -113,17 +138,10 @@ int main()
 			{// Do nothing, if no instruction detected
 				continue;
 			}
-			else if(operand1[0] == '\0' && operand2[0] == '\0')				// Zero Operand Instruction
+			else
 			{
-				cout << "No value in operand1 and operand2" << endl;
-			}
-			else if((operand1[0] != '\0') && (operand2[0] == '\0'))			// One Operand Instruction
-			{
-				cout << "Value in operand1" << endl;
-			}
-			else if((operand1[0] != '\0') && (operand2[0] != '\0'))			// Two Operand Instruction
-			{
-				cout << "Value in operand1 and operand2" << endl;
+				// User Defined Assembly to HexCode Function
+				asm_to_hex(program, mnemonic, operand1, operand2);
 			}
 		}
 		else
@@ -167,14 +185,14 @@ void strupr(string &str)
         ch = ::toupper(ch);
     });
 }
-void strlwr(string &str)
-{
-	for_each(str.begin(), str.end(), [](char & ch) 
-	{
-        ch = ::tolower(ch);
-    });
-}
-char *input(string str)
+// void strlwr(string &str)
+// {
+// 	for_each(str.begin(), str.end(), [](char & ch) 
+// 	{
+//         ch = ::tolower(ch);
+//     });
+// }
+char *get_name_of(string str)
 {
 	int i;
 	cout << "Enter assembly file name: ";
