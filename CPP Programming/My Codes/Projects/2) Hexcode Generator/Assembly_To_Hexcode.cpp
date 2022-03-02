@@ -13,6 +13,7 @@ char *get_name_of(string str);
 void asm_to_hex(string instruct, string mnemonic, string operand1, string operand2)
 {
 	int row = 0, column = 0;
+	string hexCode;
 	if(operand1[0] == '\0' && operand2[0] == '\0')					// Zero Operand Instruction
 	{
 		row = 2;
@@ -26,6 +27,13 @@ void asm_to_hex(string instruct, string mnemonic, string operand1, string operan
 			{"C9", 	"EB", 	"F9", 	"E3", 	"E9", 	"FB", "F3", "00", 	"76", 
 			"0F",  "07",  "1F",	 "17", 	"2F",  "37",  "3F",	 "27", 	"20",  "30"}
 		};
+		for(int j = 0; j < column; j++)
+		{
+			if(mnemonic == opCodeArray[0][j])
+			{
+				hexCode = opCodeArray[1][j];		// Assign corresponging op-code 
+			}
+		}
 	}
 	else if((operand1[0] != '\0') && (operand2[0] == '\0'))			// One Operand Instruction
 	{
