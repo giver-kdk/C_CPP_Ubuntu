@@ -70,8 +70,8 @@ int main()
 				if(i == 0)		{dataSet[i][j] = dependant[j];}					// Set of X
 				else if(i == 1)	{dataSet[i][j] = independant[j];}				// Set of Y
 				else if(i == 2)	{dataSet[i][j] = product[j];}					// Set of XY
-				else if(i == 3)	{dataSet[i][j] = inputSquare[j];}				// Set of EX2
-				else if(i == 4)	{dataSet[i][j] = outputSquare[j];}				// Set of EY2
+				else if(i == 3)	{dataSet[i][j] = inputSquare[j];}				// Set of X2
+				else if(i == 4)	{dataSet[i][j] = outputSquare[j];}				// Set of Y2
 			}
 		}
 		regression_maths(observeNum, inputSum, outputSum, productSum, inSquareSum, outSquareSum, interceptA, slopeB, dataSet);
