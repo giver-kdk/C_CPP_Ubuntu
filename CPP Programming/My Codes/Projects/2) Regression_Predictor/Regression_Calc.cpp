@@ -19,27 +19,27 @@ int main()
 	double product[observeNum], inputSquare[observeNum], outputSquare[observeNum];
 	// Declare summations
 	double inputSum = 0, outputSum = 0, productSum = 0, inSquareSum = 0, outSquareSum = 0;
-	cout << "Enter any " << observeNum << " input data(X):" << endl;
-	for(int i = 0; i < observeNum; i++)
-	{
-		cin >> dependant[i];
-		// Data storing and real time sum calculation
-		inputSum = inputSum + dependant[i];
-
-		inputSquare[i] = dependant[i] * dependant[i];
-		inSquareSum = inSquareSum + inputSquare[i];
-	}
-	cout << "Enter any " << observeNum << " output data(Y):" << endl;
+	cout << "Enter any " << observeNum << " independant input data(X):" << endl;
 	for(int i = 0; i < observeNum; i++)
 	{
 		cin >> independant[i];
 		// Data storing and real time sum calculation
-		outputSum = outputSum + independant[i];
+		inputSum = inputSum + independant[i];
 
-		product[i] = dependant[i] * independant[i];
+		inputSquare[i] = independant[i] * independant[i];
+		inSquareSum = inSquareSum + inputSquare[i];
+	}
+	cout << "Enter any " << observeNum << " dependant output data(Y):" << endl;
+	for(int i = 0; i < observeNum; i++)
+	{
+		cin >> dependant[i];
+		// Data storing and real time sum calculation
+		outputSum = outputSum + dependant[i];
+
+		product[i] = independant[i] * dependant[i];
 		productSum = productSum + product[i];
 
-		outputSquare[i] = independant[i] * independant[i];
+		outputSquare[i] = dependant[i] * dependant[i];
 		outSquareSum = outSquareSum + outputSquare[i];
 	}
 	// Formula for slope and intercept is derived from least square method on regression model
@@ -67,8 +67,8 @@ int main()
 		{
 			for(int j = 0; j < observeNum; j++)
 			{
-				if(i == 0)		{dataSet[i][j] = dependant[j];}					// Set of X
-				else if(i == 1)	{dataSet[i][j] = independant[j];}				// Set of Y
+				if(i == 0)		{dataSet[i][j] = independant[j];}				// Set of X
+				else if(i == 1)	{dataSet[i][j] = dependant[j];}					// Set of Y
 				else if(i == 2)	{dataSet[i][j] = product[j];}					// Set of XY
 				else if(i == 3)	{dataSet[i][j] = inputSquare[j];}				// Set of X2
 				else if(i == 4)	{dataSet[i][j] = outputSquare[j];}				// Set of Y2
