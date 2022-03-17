@@ -1,4 +1,4 @@
-// Sometime, we may not want to change the value of avariable inside specific function.
+// Sometime, we may not want to change the value of a variable inside specific function.
 // In that case, a constant argument can be implemented
 #include<iostream>
 using namespace std;

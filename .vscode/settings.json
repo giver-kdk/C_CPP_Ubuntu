@@ -47,6 +47,13 @@
     "streambuf": "cpp",
     "typeinfo": "cpp",
     "cstring": "cpp",
-    "bitset": "cpp"
-  }
+    "bitset": "cpp",
+    "stdio.h": "c",
+    "math.h": "c",
+    "qapplication": "cpp",
+    // "qapplication": "/home/giver_kdk/Qt/6.2.3/gcc_64/include/**",
+    "cmake.cmakePath": "/home/giver_kdk/Qt/Tools/CMake/bin"
+  },
+  "cmake.configureOnOpen": false
 }
+

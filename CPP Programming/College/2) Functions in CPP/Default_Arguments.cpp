@@ -1,5 +1,5 @@
 // Default arguments are function arguments with default values which are used when user value is unavailable.
-// The default arguments should be araanged in function from "extreme Right"
+// The default arguments should be arranged in function from "extreme Right"
 #include <iostream>
 using namespace std;
 // num3 and num4 are default arguments here.

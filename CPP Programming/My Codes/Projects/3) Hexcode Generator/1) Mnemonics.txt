@@ -18,10 +18,10 @@ JPO Label
 JZ Label
 LDA Address
 LHLD Address
-LXI B
-LXI D
-LXI H
-LXI SP
+LXI B, Address
+LXI D, Address
+LXI H, Address
+LXI SP, Address
 SHLD Address
 STA Address
 ACI Data				

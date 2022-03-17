@@ -13,7 +13,7 @@ int main()
 	float x = 10.56;
 	int y;
 	// 'static_cast' is a template
-	y = static_cast<int>(x);				// Template style data conversion of 'float' to 'int'
+	y = static_cast<int>(x);							// Template style data conversion of 'float' to 'int'
 	cout << "x: " << x << "\t" << "y: " << y << endl;	
 	return 0;
 }
