@@ -2,7 +2,7 @@
 #include<iostream>
 using namespace std;
 
-// Funciton with same name but different parameters
+// Function with same name but different parameters
 int add(int num)
 {
 	num = num + 20;

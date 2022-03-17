@@ -10,7 +10,8 @@ class Bank
         double amount;
 
     public:
-        Bank(string name, double money);    // Declaration of constructor
+        // Constructor doesn't have return type
+        Bank(string name, double money);        // Declaration of constructor
         string get_name();
         double get_balance();
         void withdraw(double withdraw);
@@ -26,7 +27,8 @@ int main()
     user.withdraw(2000);
     user.display();
 }
-Bank ::Bank(string name, double money)
+// Constructor doesn't have return type
+Bank :: Bank(string name, double money)
 {
     cout << "Constructor is called" << endl;
     customerName = name;

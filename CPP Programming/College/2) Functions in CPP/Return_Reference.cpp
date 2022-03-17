@@ -1,7 +1,7 @@
 // Returning by reference from a function as a parameter
 #include <iostream>
 using namespace std;
-// globel variable
+// global variable
 int x = 5, y = 15; 
 // We should not return local variables by reference. It causes security bugs
 int &setx();

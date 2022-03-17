@@ -11,6 +11,7 @@ class Employee
         string name;
         double salary;
     public:
+        // Constructor doesn't have return type
         Employee(string n, double sal);           // It is called as a constructor as it has same name as class name
         void display()
         {

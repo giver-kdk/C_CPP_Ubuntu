@@ -7,13 +7,18 @@
 #define SIZE1 202					// Number of 1 byte instructions
 #define SIZE2 18					// Number of 2 byte instructions
 #define SIZE3 26					// Number of 3 byte instructions
-
+#define LABEL_NUM 18
+#define MAX_LABEL 50
+#define START_ADDRESS 49152			// 49152 (Decimal) = C000 (Hexadecimal)
 
 using namespace std;
+
 char fName[20];
 int hexCode[1000], hexIndex = 0;
-string oneByteCode[250], twoByteCode[50], threeByteCode[50];
 int oneByteHex[250], twoByteHex[50], threeByteHex[50];
+string oneByteCode[250], twoByteCode[50], threeByteCode[50];
+int labelAddress[MAX_LABEL], labelIndex = 0;
+string labelName[MAX_LABEL];
 
 void strupr(string &str);
 // void strlwr(string &str);
@@ -26,6 +31,8 @@ void set_address_data(string operand, int byte, int &data, int &addressHigh, int
 	string subCode1, subCode2; 
 	subCode1.resize(5);
 	subCode2.resize(5);
+	// Purify 'operand' string
+	operand.erase(remove(operand.begin(), operand.end(), '\0'), operand.end());
 	// Remove all unneccessary zeros
 	while(flag == 1)
 	{
@@ -86,11 +93,6 @@ void set_address_data(string operand, int byte, int &data, int &addressHigh, int
 	{
 		data = number;
 	}
-	// cout << hex << uppercase << data << endl;
-	// cout << hex << uppercase << addressHigh << endl;
-	// cout << hex << uppercase << addressLow << endl;
-	// cout << setw(2) << setfill('0') << hex << uppercase << number << endl;
-	// cout << byte << endl; 
 }
 void set_instruction_byte(string mnemonic, int &byte)
 {
@@ -125,14 +127,35 @@ void set_instruction_byte(string mnemonic, int &byte)
 		}
 	}
 }
-void asm_to_hex(string instruct, string mnemonic, string operand1, string operand2)
+void asm_to_hex(string instruct, string label, string mnemonic, string operand1, string operand2)
 {
 	// Data and Addresses initialized higher than 256(8-bit)
 	int data = 0x111, addressHigh = 0x111, addressLow = 0x111;
-	int i, byte = 1;										// Assume 1 byte instruction
+	int i, byte = 1, labelFlag = 0;								// Assume 1 byte instruction
 	// Remove last whitespace
 	instruct.pop_back();
 	string required_instruction;
+	label.erase(remove(label.begin(), label.end(), '\0'), label.end());					// Clean 'label'
+	mnemonic.erase(remove(mnemonic.begin(), mnemonic.end(), '\0'), mnemonic.end());		// Clean 'mnemonic'
+	operand1.erase(remove(operand1.begin(), operand1.end(), '\0'), operand1.end());		// Clean 'operand1'
+	operand2.erase(remove(operand2.begin(), operand2.end(), '\0'), operand2.end());		// Clean 'operand2'
+	if(label[0] != '\0')											// If 'label' is has data
+	{
+		for(i = 0; i < MAX_LABEL; i++)
+		{
+			if(labelName[i] == label)
+			{
+				cout << "Label Found Label Found....!!!!!!!!!!!!" << endl;
+				// Code for storing given index's address on hexCode Array
+			}
+			else
+			{
+				labelName[labelIndex] = label; 
+				labelAddress[labelIndex] = START_ADDRESS + hexIndex;
+				labelIndex++;
+			}
+		}
+	}
 	// Detect instruction byte
 	if(operand1[0] == '\0' && operand2[0] == '\0')					// Zero Operand Instruction
 	{
@@ -140,11 +163,36 @@ void asm_to_hex(string instruct, string mnemonic, string operand1, string operan
 	}
 	else if((operand1[0] != '\0') && (operand2[0] == '\0'))			// One Operand Instruction
 	{
-		if(mnemonic == "RST")
+		for(i = 0; i < LABEL_NUM; i++)
+		{
+			if(mnemonic == threeByteCode[i])
+			{
+				labelFlag = 1;
+			}
+		}
+		if(labelFlag == 1)
+		{
+			required_instruction = mnemonic;
+			for(i = 0; i < MAX_LABEL; i++)
+			{
+				if(labelName[i] == label)
+				{
+					cout << "Label Found So Label Address Assigned in hexCode Array....!!!!!!!!!!!!" << endl;
+					hexCode[hexIndex] = labelAddress[i];
+				}
+				else
+				{
+					labelName[labelIndex] = operand1; 
+					labelAddress[labelIndex] = hexIndex + 1;
+					labelIndex++;
+				}
+			}
+		}
+		else if(mnemonic == "RST")
 		{
 			required_instruction = mnemonic + " " + operand1;
 		}
-		else if((operand1[0] >= 48) && (operand1[0] <= 57))			// If operand is numerical
+		else if((operand1[0] >= '0') && (operand1[0] <= '9'))			// If operand is numerical
 		{
 			set_instruction_byte(mnemonic, byte);
 			set_address_data(operand1, byte, data, addressHigh, addressLow);
@@ -158,7 +206,7 @@ void asm_to_hex(string instruct, string mnemonic, string operand1, string operan
 	}
 	else if((operand1[0] != '\0') && (operand2[0] != '\0'))			// Two Operand Instruction
 	{
-		if((operand2[0] >= 48) && (operand2[0] <= 57))				// For Numerical Operand
+		if((operand2[0] >= '0') && (operand2[0] <= '9'))				// For Numerical Operand
 		{
 			set_instruction_byte(mnemonic, byte);
 			set_address_data(operand2, byte, data, addressHigh, addressLow);
@@ -170,7 +218,13 @@ void asm_to_hex(string instruct, string mnemonic, string operand1, string operan
 		}
 		// cout << "Value in operand1 and operand2" << endl;
 	}
+	// '\0' is embedded in the string during concatinaton. Remove extra '\0' using 'erase' and 'remove'
+	required_instruction.erase(remove(required_instruction.begin(), required_instruction.end(), '\0'), required_instruction.end());
 	// Use corresponding opcode for detected byte of instruction
+	for(i = 0; required_instruction[i] != '\0'; i++)
+	{
+		cout << "Iterator: " << i << endl;
+	}
 	cout << "String length of 2 byte array code: " << twoByteCode[5].length() << endl;
 	cout << "String length of required instruction: " << required_instruction.length() << endl;
 	cout << "HAHAHAHHAHA byte: " << byte << endl;
@@ -198,6 +252,7 @@ void asm_to_hex(string instruct, string mnemonic, string operand1, string operan
 				cout << "Hahahaha 2 byte here****************************" << endl;
 				hexCode[hexIndex] = twoByteHex[i];				// Assign corresponging op-code 
 				hexIndex++;
+				cout << "Hahaha data: " << data << endl;
 				hexCode[hexIndex] = data;						// Assign corresponging op-code 
 				hexIndex++;
 			}
@@ -212,9 +267,9 @@ void asm_to_hex(string instruct, string mnemonic, string operand1, string operan
 				cout << "Hahahaha 3 byte here****************************" << endl;
 				hexCode[hexIndex] = threeByteHex[i];			// Assign corresponging op-code 
 				hexIndex++;
-				hexCode[hexIndex] = addressLow;					// Assign corresponging op-code 
+				hexCode[hexIndex] = addressLow;					// Assign lower nibble address
 				hexIndex++;
-				hexCode[hexIndex] = addressHigh;				// Assign corresponging op-code 
+				hexCode[hexIndex] = addressHigh;				// Assign higher nibble address 
 				hexIndex++;
 			}
 		}
@@ -222,16 +277,20 @@ void asm_to_hex(string instruct, string mnemonic, string operand1, string operan
 }
 void display_instruct_address()
 {
-	// 49152 (Decimal) = C000 (Hexadecimal)
-	static int instructAddress = 49152, number = 1;
+	static int instructAddress = START_ADDRESS, list_num = 1, i;
 	// 'hex' and 'uppercase' converts number into capital hexadecimal
-	cout << setw(4) << number << ") " << hex << uppercase << instructAddress << "H: ";
+	cout << dec << setw(4) << setfill(' ') << list_num << ") ";
+	cout << hex << uppercase << instructAddress << "H: ";
 	instructAddress++;
-	number++;
+	list_num++;
 }
-void print_hexadecimal(string hex)
+void print_hexadecimal()
 {
-	display_instruct_address();
+	for(int i = 0; i < 100; i++)
+	{
+		display_instruct_address();
+		cout << setw(2) << setfill('0') << hex << uppercase << hexCode[i] << endl;
+	}
 	
 }
 
@@ -242,13 +301,7 @@ void strupr(string &str)
         ch = ::toupper(ch);
     });
 }
-// void strlwr(string &str)
-// {
-// 	for_each(str.begin(), str.end(), [](char & ch) 
-// 	{
-//         ch = ::tolower(ch);
-//     });
-// }
+
 char *get_name_of(string str)
 {
 	int i;
@@ -264,9 +317,9 @@ char *get_name_of(string str)
 int main()
 {
 	initialize_instruction_set();
-	enum programCounter{opCode, firstOperand, secondOperand};
-	int i = 0, j = 0, k = 0, index = 0, mnemoNum = 0, op1Num = 0, op2Num = 0, programCounter = opCode;
-	string instruction, file_name, mnemonic, operand1, operand2;
+	enum programCounter{labelCode, opCode, firstOperand, secondOperand};
+	int x = 0, i = 0, j = 0, k = 0, index = 0, programCounter;
+	string instruction, file_name, label, mnemonic, operand1, operand2;
 	instruction.resize(50);
 	mnemonic.resize(20);						// Setting string size
 	char data = 's';
@@ -288,27 +341,44 @@ int main()
 			string program = instruction;
 			instruction = "\0";
 			strupr(program);										// Uppercasing instruction for flexibility
-			programCounter = opCode;
+			if(program.find(':') != -1)								// Search for 'label:'
+			{
+				programCounter = labelCode;
+			}
+			else
+			{
+				programCounter = opCode;
+			}
+			label = "\0";
 			mnemonic = "\0";
 			operand1 = "\0";
 			operand2 = "\0";
+			x = 0;
 			i = 0;
 			j = 0;
 			k = 0;
 			index = 0;
 			// String size decreases due to above initialization
 			instruction.resize(20);
+			label.resize(10);
 			mnemonic.resize(10);
 			operand1.resize(10);
 			operand2.resize(10);
 
+
 			for(int l = 0; l < program.length(); l++)
 			{
-				if((program[l] == ' ') || (program[l] == ',') || (program[l] == '\t'))
+				if((program[l] == ' ') || (program[l] == ':') || (program[l] == ',') || (program[l] == '\t'))
 				{
-					if((program[l-1] != ',') && (program[l-1] != ' ') && (program[l-1] != '\t'))
+					if((program[l-1] != ',') && (program[l] != ':') && (program[l-1] != ' ') && (program[l-1] != '\t'))
 					{
-						if(programCounter == opCode)
+						if(programCounter == labelCode)
+						{
+							label[x] = '\0';
+							cout << "label: " << "*" << label << "*" << endl;
+							programCounter++;
+						}
+						else if(programCounter == opCode)
 						{
 							mnemonic[i] = '\0';
 							cout << "mnemonic: " << "*" << mnemonic << "*" << endl;
@@ -331,7 +401,12 @@ int main()
 				}
 				else
 				{
-					if(programCounter == opCode)
+					if(programCounter == labelCode)
+					{
+						label[x] = program[l];
+						x++;
+					}
+					else if(programCounter == opCode)
 					{
 						mnemonic[i] = program[l];
 						i++;
@@ -356,7 +431,7 @@ int main()
 			else
 			{
 				// User Defined Assembly to HexCode Function
-				asm_to_hex(program, mnemonic, operand1, operand2);
+				asm_to_hex(program, label, mnemonic, operand1, operand2);
 			}
 		}
 		else
@@ -366,10 +441,7 @@ int main()
 			index++;
 		}
 	}
-	for(i = 0; i < 20; i++)
-	{
-		cout << hex << uppercase << hexCode[i] << endl;
-	}
+	print_hexadecimal();
 	fclose(fp2);
 	return 0;
 }

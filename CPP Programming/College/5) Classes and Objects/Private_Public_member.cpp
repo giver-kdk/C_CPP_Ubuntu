@@ -15,7 +15,7 @@ class Employee
 		{
 			return (salary + 10000);
 		}
-	// Private members can be accessed from anywhere
+	// Public members can be accessed from anywhere
 	public:
 		string name;
 		string position;

@@ -7,6 +7,7 @@ int main()
 {
     // 'nothrow' stops the exception throwing and allows 'new' to return NULL on failure
     int *ptr = new(nothrow) int;                    // Integer size memory is allocated
+    // double(20.56) is equivalent to a default constructor being called
     double *ptr2 = new(nothrow) double(20.56);      // Double size memory and also value is initialized 
     if(ptr == NULL)
     {
