@@ -201,6 +201,7 @@ void asm_to_hex(string instruct, string label, string mnemonic, string operand1,
 				}
 				else
 				{
+					
 					labelName[labelIndex] = operand1; 
 					labelAddress[labelIndex] = hexIndex + 1;
 					labelIndex++;
