@@ -145,7 +145,8 @@ void asm_to_hex(string instruct, string label, string mnemonic, string operand1,
 {
 	// Data and Addresses initialized higher than 256(8-bit)
 	int data = 0x111, addressHigh = 0x111, addressLow = 0x111;
-	int i, byte = 1, labelFlag = 0;								// Assume 1 byte instruction
+	int i, byte = 1;								// Assume 1 byte instruction
+	bool labelFound = true, labelFlag = false;
 	// Remove last whitespace
 	instruct.pop_back();
 	string required_instruction;
@@ -181,10 +182,10 @@ void asm_to_hex(string instruct, string label, string mnemonic, string operand1,
 		{
 			if(mnemonic == threeByteCode[i])
 			{
-				labelFlag = 1;
+				labelFlag = true;
 			}
 		}
-		if(labelFlag == 1)
+		if(labelFlag)
 		{
 			byte = 3;
 			required_instruction = mnemonic;
@@ -280,17 +281,35 @@ void asm_to_hex(string instruct, string label, string mnemonic, string operand1,
 	}
 	else if(byte == 3)
 	{
-		for(i = 0; i < SIZE3; i++)
+		if(labelFound)
 		{
-			if(required_instruction == threeByteCode[i])
+			for(i = 0; i < SIZE3; i++)
 			{
-				cout << "Hahahaha 3 byte here****************************" << endl;
-				hexCode[hexIndex] = threeByteHex[i];			// Assign corresponging op-code 
-				hexIndex++;
-				hexCode[hexIndex] = addressLow;					// Assign lower nibble address
-				hexIndex++;
-				hexCode[hexIndex] = addressHigh;				// Assign higher nibble address 
-				hexIndex++;
+				if(required_instruction == threeByteCode[i])
+				{
+					cout << "Hahahaha 3 byte here****************************" << endl;
+					hexCode[hexIndex] = threeByteHex[i];			// Assign corresponging op-code 
+					hexIndex++;
+					hexCode[hexIndex] = addressLow;					// Assign lower nibble address
+					hexIndex++;
+					hexCode[hexIndex] = addressHigh;				// Assign higher nibble address 
+					hexIndex++;
+				}
+			}
+		}
+		else
+		{
+			for(i = 0; i < SIZE3; i++)
+			{
+				if(required_instruction == threeByteCode[i])
+				{
+					cout << "Hahahaha 3 byte here****************************" << endl;
+					hexCode[hexIndex] = threeByteHex[i];			// Assign corresponging op-code 
+					hexIndex++;
+					// No label detected.So, skip address assignment 
+					hexIndex++;
+					hexIndex++;
+				}
 			}
 		}
 	}
