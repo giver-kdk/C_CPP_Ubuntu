@@ -24,13 +24,12 @@ void strupr(string &str);
 // void strlwr(string &str);
 char *get_name_of(string str);
 void initialize_instruction_set();
+void set_high_low_address(string operand, int &addressHigh, int &addressLow);
 void set_address_data(string operand, int byte, int &data, int &addressHigh, int &addressLow)
 {
 	int digitArray[10] = {0};
-	int number = 0, flag = 1, i = 0, j = 0, k = 0;
-	string subCode1, subCode2; 
-	subCode1.resize(5);
-	subCode2.resize(5);
+	int number = 0, flag = 1, i = 0;
+	string finalOperand; 
 	// Purify 'operand' string
 	operand.erase(remove(operand.begin(), operand.end(), '\0'), operand.end());
 	// Remove all unneccessary zeros
@@ -47,6 +46,7 @@ void set_address_data(string operand, int byte, int &data, int &addressHigh, int
 		// Convert string into exact number
 		istringstream intValue(operand);
 		intValue >> hex >> number;
+		finalOperand = operand;
 	}
 	// If operand is in decimal, directly store
 	else
@@ -60,40 +60,54 @@ void set_address_data(string operand, int byte, int &data, int &addressHigh, int
 		{
 			number = number * 10 + digitArray[i];
 		}
+		stringstream str_stream;  
+		str_stream << hex << number;  
+		string stringNumber;  
+		str_stream >> stringNumber;  
+		finalOperand = stringNumber;
 	}
 	if(byte == 3)
 	{
-		int count = 0;
-		// Separate the address parts into two
-		for(i = 0; i < operand.length(); i++)
-		{
-			if(i < (operand.length() - 2))
-			{
-				subCode1[j] = operand[i];
-				j++;
-			}
-			else
-			{
-				subCode2[k] = operand[i];
-				k++;
-			}
-		}
-		subCode1[j] = '\0';
-		subCode2[k] = '\0';
-		// Convert separated string into hex value
-		subCode1.pop_back();
-		istringstream higherValue(subCode1);
-		higherValue >> hex >> addressHigh;
-
-		subCode2.pop_back();
-		istringstream lowerValue(subCode2);
-		lowerValue >> hex >> addressLow;
+		set_high_low_address(finalOperand, addressHigh, addressLow);
 	}
-	else if(byte == 2)
+	if(byte == 2)
 	{
 		data = number;
 	}
 }
+void set_high_low_address(string operand, int &addressHigh, int &addressLow)
+{
+	int i = 0, j = 0, k = 0;
+	string subCode1, subCode2;
+	subCode1.resize(5);
+	subCode2.resize(5);
+	// Separate the address parts into two
+	for(i = 0; i < operand.length(); i++)
+	{
+		if(i < (operand.length() - 2))
+		{
+			subCode1[j] = operand[i];
+			j++;
+		}
+		else
+		{
+			subCode2[k] = operand[i];
+			k++;
+		}
+	}
+	subCode1[j] = '\0';
+	subCode2[k] = '\0';
+	// Convert separated string into hex value
+	subCode1.pop_back();
+	istringstream higherValue(subCode1);
+	higherValue >> hex >> addressHigh;
+
+	subCode2.pop_back();
+	istringstream lowerValue(subCode2);
+	lowerValue >> hex >> addressLow;
+
+}
+
 void set_instruction_byte(string mnemonic, int &byte)
 {
 	int i, j;
@@ -172,13 +186,14 @@ void asm_to_hex(string instruct, string label, string mnemonic, string operand1,
 		}
 		if(labelFlag == 1)
 		{
+			byte = 3;
 			required_instruction = mnemonic;
 			for(i = 0; i < MAX_LABEL; i++)
 			{
 				if(labelName[i] == label)
 				{
 					cout << "Label Found So Label Address Assigned in hexCode Array....!!!!!!!!!!!!" << endl;
-					hexCode[hexIndex] = labelAddress[i];
+					set_high_low_address(operand1, addressHigh, addressLow);
 				}
 				else
 				{
