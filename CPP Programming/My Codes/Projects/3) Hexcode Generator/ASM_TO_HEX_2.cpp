@@ -146,15 +146,15 @@ void asm_to_hex(string instruct, string label, string mnemonic, string operand1,
 	// Data and Addresses initialized higher than 256(8-bit)
 	int data = 0x111, addressHigh = 0x111, addressLow = 0x111;
 	int i, byte = 1;								// Assume 1 byte instruction
-	bool labelFound = true, labelFlag = false;
+	bool labelFound = false, labelFlag = false, labelWasStored = false;
 	// Remove last whitespace
 	instruct.pop_back();
 	string required_instruction;
 	label.erase(remove(label.begin(), label.end(), '\0'), label.end());					// Clean 'label'
-	mnemonic.erase(remove(mnemonic.begin(), mnemonic.end(), '\0'), mnemonic.end());		// Clean 'mnemonic'
-	operand1.erase(remove(operand1.begin(), operand1.end(), '\0'), operand1.end());		// Clean 'operand1'
-	operand2.erase(remove(operand2.begin(), operand2.end(), '\0'), operand2.end());		// Clean 'operand2'
-	if(label[0] != '\0')											// If 'label' is has data
+	// mnemonic.erase(remove(mnemonic.begin(), mnemonic.end(), '\0'), mnemonic.end());		// Clean 'mnemonic'
+	// operand1.erase(remove(operand1.begin(), operand1.end(), '\0'), operand1.end());		// Clean 'operand1'
+	// operand2.erase(remove(operand2.begin(), operand2.end(), '\0'), operand2.end());		// Clean 'operand2'
+	if(label[0] != '\0')																// If 'label' has data
 	{
 		for(i = 0; i < MAX_LABEL; i++)
 		{
@@ -162,13 +162,24 @@ void asm_to_hex(string instruct, string label, string mnemonic, string operand1,
 			{
 				cout << "Label Found Label Found....!!!!!!!!!!!!" << endl;
 				// Code for storing given index's address on hexCode Array
+				labelWasStored = true;
+				stringstream str_stream;  
+				str_stream << hex << (START_ADDRESS + hexIndex);  
+				string stringAddress;  
+				str_stream >> stringAddress; 
+				set_high_low_address(stringAddress, addressHigh, addressLow);
+				hexCode[labelAddress[i]]= addressLow;
+				hexCode[labelAddress[i] + 1]= addressHigh;
+				// Reset Addresses
+				addressHigh = 0x111;
+				addressLow = 0x111;
 			}
-			else
-			{
-				labelName[labelIndex] = label; 
-				labelAddress[labelIndex] = START_ADDRESS + hexIndex;
-				labelIndex++;
-			}
+		}
+		if(!labelWasStored)
+		{
+			labelName[labelIndex] = label; 
+			labelAddress[labelIndex] = START_ADDRESS + hexIndex;
+			labelIndex++;
 		}
 	}
 	// Detect instruction byte
@@ -193,6 +204,7 @@ void asm_to_hex(string instruct, string label, string mnemonic, string operand1,
 			{
 				if(labelName[i] == label)
 				{
+					labelFound = true;
 					stringstream str_stream;  
 					str_stream << hex << labelAddress[i];  
 					string stringAddress;  
@@ -200,13 +212,12 @@ void asm_to_hex(string instruct, string label, string mnemonic, string operand1,
 					cout << "Label Found So Label Address Assigned....!!!!!!!!!!!!" << endl;
 					set_high_low_address(stringAddress, addressHigh, addressLow);
 				}
-				else
-				{
-					labelFound = false;
-					labelName[labelIndex] = operand1; 
-					labelAddress[labelIndex] = hexIndex + 1;
-					labelIndex++;
-				}
+			}
+			if(!labelFound)
+			{
+				labelName[labelIndex] = operand1; 
+				labelAddress[labelIndex] = hexIndex + 1;
+				labelIndex++;
 			}
 		}
 		else if(mnemonic == "RST")
@@ -281,19 +292,37 @@ void asm_to_hex(string instruct, string label, string mnemonic, string operand1,
 	}
 	else if(byte == 3)
 	{
-		if(labelFound)
+		if(labelFlag)
 		{
-			for(i = 0; i < SIZE3; i++)
+			if(labelFound)
 			{
-				if(required_instruction == threeByteCode[i])
+				for(i = 0; i < SIZE3; i++)
 				{
-					cout << "Hahahaha 3 byte here****************************" << endl;
-					hexCode[hexIndex] = threeByteHex[i];			// Assign corresponging op-code 
-					hexIndex++;
-					hexCode[hexIndex] = addressLow;					// Assign lower nibble address
-					hexIndex++;
-					hexCode[hexIndex] = addressHigh;				// Assign higher nibble address 
-					hexIndex++;
+					if(required_instruction == threeByteCode[i])
+					{
+						cout << "Hahahaha 3 byte here with found label****************************" << endl;
+						hexCode[hexIndex] = threeByteHex[i];			// Assign corresponging op-code 
+						hexIndex++;
+						hexCode[hexIndex] = addressLow;					// Assign lower nibble address
+						hexIndex++;
+						hexCode[hexIndex] = addressHigh;				// Assign higher nibble address 
+						hexIndex++;
+					}
+				}
+			}
+			else
+			{
+				for(i = 0; i < SIZE3; i++)
+				{
+					if(required_instruction == threeByteCode[i])
+					{
+						cout << "Hahahaha 3 byte here with unknown label****************************" << endl;
+						hexCode[hexIndex] = threeByteHex[i];			// Assign corresponging op-code 
+						hexIndex++;
+						// No label detected.So, skip address assignment 
+						hexIndex++;
+						hexIndex++;
+					}
 				}
 			}
 		}
@@ -306,8 +335,9 @@ void asm_to_hex(string instruct, string label, string mnemonic, string operand1,
 					cout << "Hahahaha 3 byte here****************************" << endl;
 					hexCode[hexIndex] = threeByteHex[i];			// Assign corresponging op-code 
 					hexIndex++;
-					// No label detected.So, skip address assignment 
+					hexCode[hexIndex] = addressLow;					// Assign lower nibble address
 					hexIndex++;
+					hexCode[hexIndex] = addressHigh;				// Assign higher nibble address 
 					hexIndex++;
 				}
 			}
@@ -365,7 +395,7 @@ int main()
 
 	
 	// FILE *fp1 = fopen(get_name_of(file_name), "r");
-	FILE *fp2 = fopen("Transfer.txt", "r");
+	FILE *fp2 = fopen("Demo.txt", "r");
 	if(fp2 == NULL)
 	{
 		cout << "Error Opening file..." << endl;

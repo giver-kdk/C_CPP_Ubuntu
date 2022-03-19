@@ -1,0 +1,4 @@
+label: MVI B, 40H
+MOV A, B
+JMP label
+HLT
