@@ -192,8 +192,12 @@ void asm_to_hex(string instruct, string label, string mnemonic, string operand1,
 			{
 				if(labelName[i] == label)
 				{
-					cout << "Label Found So Label Address Assigned in hexCode Array....!!!!!!!!!!!!" << endl;
-					set_high_low_address(operand1, addressHigh, addressLow);
+					stringstream str_stream;  
+					str_stream << hex << labelAddress[i];  
+					string stringAddress;  
+					str_stream >> stringAddress;  
+					cout << "Label Found So Label Address Assigned....!!!!!!!!!!!!" << endl;
+					set_high_low_address(stringAddress, addressHigh, addressLow);
 				}
 				else
 				{
