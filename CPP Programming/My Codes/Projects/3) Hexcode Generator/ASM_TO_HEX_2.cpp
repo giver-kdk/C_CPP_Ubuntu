@@ -343,7 +343,7 @@ void asm_to_hex(string instruct, string label, string mnemonic, string operand1,
 			}
 		}
 	}
-}
+} 
 void display_instruct_address()
 {
 	static int instructAddress = START_ADDRESS, list_num = 1, i;
