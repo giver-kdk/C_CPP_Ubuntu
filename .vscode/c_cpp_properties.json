@@ -10,7 +10,7 @@
                 // "/home/giver_kdk/Qt/6.2.3/gcc_64/include/QtGui/**"
             ],
             "defines": [],
-            "compilerPath": "/usr/bin/gcc",
+            // "compilerPath": "/usr/bin/gcc",
             "cStandard": "gnu17",
             "cppStandard": "gnu++14",
             "intelliSenseMode": "linux-gcc-x64"
