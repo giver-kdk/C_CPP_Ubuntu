@@ -1,4 +1,4 @@
-// Program in C to perform set operation of union, intersection and difference.
+// Program in C to find cartesian product of two sets.
 #include <stdio.h>
 #include <math.h>
 
