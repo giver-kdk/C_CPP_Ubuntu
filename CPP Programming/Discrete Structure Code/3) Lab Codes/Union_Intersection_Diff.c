@@ -1,5 +1,6 @@
 // Program in C to perform set operation of union, intersection and difference.
 #include <stdio.h>
+#include <stdlib.h>
 
 int main()
 {
@@ -23,6 +24,7 @@ int main()
 		printf("\nPress 1 for Union: ");
 		printf("\nPress 2 for Intersection: ");
 		printf("\nPress 3 for Difference: ");
+		printf("\nPress 4 for Exit ");
 		printf("\nEnter your choice: ");
 		scanf("%d", &ch);
 		switch (ch)
@@ -110,6 +112,8 @@ int main()
 				printf("%d\t", set3[k]);
 			}
 			break;
+		case 4:
+			exit(0);
 		default:
 			printf("Invalid Choice");
 		}
