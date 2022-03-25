@@ -152,8 +152,8 @@ void asm_to_hex(string instruct, string label, string mnemonic, string operand1,
 	string required_instruction;
 	label.erase(remove(label.begin(), label.end(), '\0'), label.end());					// Clean 'label'
 	// mnemonic.erase(remove(mnemonic.begin(), mnemonic.end(), '\0'), mnemonic.end());		// Clean 'mnemonic'
-	// operand1.erase(remove(operand1.begin(), operand1.end(), '\0'), operand1.end());		// Clean 'operand1'
-	// operand2.erase(remove(operand2.begin(), operand2.end(), '\0'), operand2.end());		// Clean 'operand2'
+	operand1.erase(remove(operand1.begin(), operand1.end(), '\0'), operand1.end());		// Clean 'operand1'
+	operand2.erase(remove(operand2.begin(), operand2.end(), '\0'), operand2.end());		// Clean 'operand2'
 	if(label[0] != '\0')																// If 'label' has data
 	{
 		for(i = 0; i < MAX_LABEL; i++)
@@ -189,9 +189,11 @@ void asm_to_hex(string instruct, string label, string mnemonic, string operand1,
 	}
 	else if((operand1[0] != '\0') && (operand2[0] == '\0'))			// One Operand Instruction
 	{
+		string testerCode = mnemonic;
+		testerCode.erase(remove(testerCode.begin(), testerCode.end(), '\0'), testerCode.end());		// Clean 'mnemonic'
 		for(i = 0; i < LABEL_NUM; i++)
 		{
-			if(mnemonic == threeByteCode[i])
+			if(testerCode == threeByteCode[i])
 			{
 				labelFlag = true;
 			}
@@ -202,7 +204,7 @@ void asm_to_hex(string instruct, string label, string mnemonic, string operand1,
 			required_instruction = mnemonic;
 			for(i = 0; i < MAX_LABEL; i++)
 			{
-				if(labelName[i] == label)
+				if(labelName[i] == operand1)
 				{
 					labelFound = true;
 					stringstream str_stream;  
@@ -253,10 +255,6 @@ void asm_to_hex(string instruct, string label, string mnemonic, string operand1,
 	// '\0' is embedded in the string during concatinaton. Remove extra '\0' using 'erase' and 'remove'
 	required_instruction.erase(remove(required_instruction.begin(), required_instruction.end(), '\0'), required_instruction.end());
 	// Use corresponding opcode for detected byte of instruction
-	for(i = 0; required_instruction[i] != '\0'; i++)
-	{
-		cout << "Iterator: " << i << endl;
-	}
 	cout << "String length of 2 byte array code: " << twoByteCode[5].length() << endl;
 	cout << "String length of required instruction: " << required_instruction.length() << endl;
 	cout << "HAHAHAHHAHA byte: " << byte << endl;
@@ -392,7 +390,6 @@ int main()
 	instruction.resize(50);
 	mnemonic.resize(20);						// Setting string size
 	char data = 's';
-
 	
 	// FILE *fp1 = fopen(get_name_of(file_name), "r");
 	FILE *fp2 = fopen("Demo.txt", "r");
