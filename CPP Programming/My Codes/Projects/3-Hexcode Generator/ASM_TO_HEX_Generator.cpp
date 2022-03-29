@@ -52,8 +52,7 @@ void strupr(string &str);
 int main()
 {
 	initialize_instruction_set();
-	char data;
-	int x = 0, i = 0, j = 0, k = 0, index = 0, PC; // PC = Program Counter
+	char data = 's';
 	enum programCounter
 	{
 		labelCode,
@@ -61,8 +60,10 @@ int main()
 		firstOperand,
 		secondOperand
 	};
+	int x = 0, i = 0, j = 0, k = 0, index = 0, PC = opCode; // PC = Program Counter
 	string instruction, file_name, label, mnemonic, operand1, operand2;
-
+	instruction.resize(50);
+	mnemonic.resize(20);
 	FILE *fp1 = fopen(get_name_of(file_name), "r"); // User inputs filename
 	if (fp1 == NULL)
 	{
@@ -115,25 +116,25 @@ int main()
 						if (PC == labelCode)
 						{
 							label[x] = '\0';
-							// cout << "label: " << "*" << label << "*" << endl;
+							cout << "label: " << "*" << label << "*" << endl;
 							PC++;
 						}
 						else if (PC == opCode)
 						{
 							mnemonic[i] = '\0';
-							// cout << "mnemonic: " << "*" << mnemonic << "*" << endl;
+							cout << "mnemonic: " << "*" << mnemonic << "*" << endl;
 							PC++;
 						}
 						else if (PC == firstOperand)
 						{
 							operand1[j] = '\0';
-							// cout << "operand1: " << "*" << operand1 << "*"<< endl;
+							cout << "operand1: " << "*" << operand1 << "*"<< endl;
 							PC++;
 						}
 						else if (PC == secondOperand)
 						{
 							operand2[k] = '\0';
-							// cout << "operand2: " << "*" << operand2 << "*" << endl;
+							cout << "operand2: " << "*" << operand2 << "*" << endl;
 							PC = opCode;
 						}
 					}
@@ -173,7 +174,7 @@ int main()
 		}
 		else
 		{
-			// cout << "Data: " << data << endl;
+			cout << "Data: " << data << endl;
 			instruction[index] = data;
 			index++;
 		}
@@ -188,6 +189,7 @@ void set_address_data(string operand, int byte, int &data, int &addressHigh, int
 	int digitArray[10] = {0};
 	int number = 0, flag = 1, i = 0;
 	string finalOperand;
+	clean_string(operand);
 	// Remove all unneccessary zeros
 	while (flag == 1)
 	{
@@ -205,7 +207,7 @@ void set_address_data(string operand, int byte, int &data, int &addressHigh, int
 	if ((operand.back() == 'h') || (operand.back() == 'H'))
 	{
 		operand.pop_back();
-		// Convert string into exact number
+		// // Convert string into exact number
 		istringstream intValue(operand);
 		intValue >> hex >> number;
 		finalOperand = operand;
@@ -264,11 +266,11 @@ void set_high_low_address(string operand, int &addressHigh, int &addressLow)
 	clean_string(subCode1);
 	clean_string(subCode2);
 	// Convert separated string into hex value
-	subCode1.pop_back();
+	// subCode1.pop_back();
 	istringstream higherValue(subCode1);
 	higherValue >> hex >> addressHigh;
 
-	subCode2.pop_back();
+	// subCode2.pop_back();
 	istringstream lowerValue(subCode2);
 	lowerValue >> hex >> addressLow;
 }

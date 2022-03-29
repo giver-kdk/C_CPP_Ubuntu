@@ -5,10 +5,9 @@
 #include <string.h>
 #include <string>
 #include <algorithm>
-#define SIZE1 202					// Number of 1 byte instructions
-#define SIZE2 18					// Number of 2 byte instructions
-#define SIZE3 26					// Number of 3 byte instructions
-
+#define SIZE1 202 // Number of 1 byte instructions
+#define SIZE2 18  // Number of 2 byte instructions
+#define SIZE3 26  // Number of 3 byte instructions
 
 using namespace std;
 char fName[20];
@@ -24,18 +23,23 @@ void set_address_data(string operand, int byte, int &data, int &addressHigh, int
 {
 	int digitArray[10] = {0};
 	int number = 0, flag = 1, i = 0, j = 0, k = 0;
-	string subCode1, subCode2; 
+	string subCode1, subCode2;
 	subCode1.resize(5);
 	subCode2.resize(5);
 	// Remove all unneccessary zeros
-	while(flag == 1)
+	while (flag == 1)
 	{
-		if((operand[0] == '0') && (operand.length() > 1))
-		{operand.erase(0, 1);}
-		else{flag = 0;}
+		if ((operand[0] == '0') && (operand.length() > 1))
+		{
+			operand.erase(0, 1);
+		}
+		else
+		{
+			flag = 0;
+		}
 	}
 	// If operand is in hexa decimal, convert into integer and store
-	if((operand.back() == 'h') || (operand.back() == 'H'))
+	if ((operand.back() == 'h') || (operand.back() == 'H'))
 	{
 		operand.pop_back();
 		// Convert string into exact number
@@ -45,23 +49,23 @@ void set_address_data(string operand, int byte, int &data, int &addressHigh, int
 	// If operand is in decimal, directly store
 	else
 	{
-		for(int i = 0; i < operand.length(); i++)
+		for (int i = 0; i < operand.length(); i++)
 		{
 			digitArray[i] = operand[i];
 			digitArray[i] = digitArray[i] - 48;
 		}
-		for(int i = 0; i < operand.length(); i++)
+		for (int i = 0; i < operand.length(); i++)
 		{
 			number = number * 10 + digitArray[i];
 		}
 	}
-	if(byte == 3)
+	if (byte == 3)
 	{
 		int count = 0;
 		// Separate the address parts into two
-		for(i = 0; i < operand.length(); i++)
+		for (i = 0; i < operand.length(); i++)
 		{
-			if(i < (operand.length() - 2))
+			if (i < (operand.length() - 2))
 			{
 				subCode1[j] = operand[i];
 				j++;
@@ -83,7 +87,7 @@ void set_address_data(string operand, int byte, int &data, int &addressHigh, int
 		istringstream lowerValue(subCode2);
 		lowerValue >> hex >> addressLow;
 	}
-	else if(byte == 2)
+	else if (byte == 2)
 	{
 		data = number;
 	}
@@ -91,36 +95,36 @@ void set_address_data(string operand, int byte, int &data, int &addressHigh, int
 	// cout << hex << uppercase << addressHigh << endl;
 	// cout << hex << uppercase << addressLow << endl;
 	// cout << setw(2) << setfill('0') << hex << uppercase << number << endl;
-	// cout << byte << endl; 
+	// cout << byte << endl;
 }
 void set_instruction_byte(string mnemonic, int &byte)
 {
 	int i, j;
 	string tester;
 	// Scanning Two Byte Code Array
-	for(i = 0; i < SIZE2; i++)
+	for (i = 0; i < SIZE2; i++)
 	{
 		tester.resize(10);
-		for(j = 0; ((twoByteCode[i][j] != ' ') && (twoByteCode[i][j] != '\0')); j++)
+		for (j = 0; ((twoByteCode[i][j] != ' ') && (twoByteCode[i][j] != '\0')); j++)
 		{
 			tester[j] = twoByteCode[i][j];
 		}
 		tester[j] = '\0';
-		if(mnemonic == tester)
+		if (mnemonic == tester)
 		{
 			byte = 2;
 		}
 	}
 	// Scanning Three Byte Code Array
-	for(i = 0; i < SIZE3; i++)
+	for (i = 0; i < SIZE3; i++)
 	{
 		tester.resize(10);
-		for(j = 0; ((threeByteCode[i][j] != ' ') && (threeByteCode[i][j] != '\0')); j++)
+		for (j = 0; ((threeByteCode[i][j] != ' ') && (threeByteCode[i][j] != '\0')); j++)
 		{
 			tester[j] = threeByteCode[i][j];
 		}
 		tester[j] = '\0';
-		if(mnemonic == tester)
+		if (mnemonic == tester)
 		{
 			byte = 3;
 		}
@@ -130,22 +134,22 @@ void asm_to_hex(string instruct, string mnemonic, string operand1, string operan
 {
 	// Data and Addresses initialized higher than 256(8-bit)
 	int data = 0x111, addressHigh = 0x111, addressLow = 0x111;
-	int i, byte = 1;										// Assume 1 byte instruction
+	int i, byte = 1; // Assume 1 byte instruction
 	// Remove last whitespace
 	instruct.pop_back();
 	string required_instruction;
 	// Detect instruction byte
-	if(operand1[0] == '\0' && operand2[0] == '\0')					// Zero Operand Instruction
+	if (operand1[0] == '\0' && operand2[0] == '\0') // Zero Operand Instruction
 	{
 		required_instruction = mnemonic;
 	}
-	else if((operand1[0] != '\0') && (operand2[0] == '\0'))			// One Operand Instruction
+	else if ((operand1[0] != '\0') && (operand2[0] == '\0')) // One Operand Instruction
 	{
-		if(mnemonic == "RST")
+		if (mnemonic == "RST")
 		{
 			required_instruction = mnemonic + " " + operand1;
 		}
-		else if((operand1[0] >= 48) && (operand1[0] <= 57))			// If operand is numerical
+		else if ((operand1[0] >= 48) && (operand1[0] <= 57)) // If operand is numerical
 		{
 			set_instruction_byte(mnemonic, byte);
 			set_address_data(operand1, byte, data, addressHigh, addressLow);
@@ -157,9 +161,9 @@ void asm_to_hex(string instruct, string mnemonic, string operand1, string operan
 		}
 		// cout << "Value in operand1" << endl;
 	}
-	else if((operand1[0] != '\0') && (operand2[0] != '\0'))			// Two Operand Instruction
+	else if ((operand1[0] != '\0') && (operand2[0] != '\0')) // Two Operand Instruction
 	{
-		if((operand2[0] >= 48) && (operand2[0] <= 57))				// For Numerical Operand
+		if ((operand2[0] >= 48) && (operand2[0] <= 57)) // For Numerical Operand
 		{
 			set_instruction_byte(mnemonic, byte);
 			set_address_data(operand2, byte, data, addressHigh, addressLow);
@@ -177,45 +181,45 @@ void asm_to_hex(string instruct, string mnemonic, string operand1, string operan
 	cout << "HAHAHAHHAHA byte: " << byte << endl;
 	cout << "2 byte Array Code: *" << twoByteCode[5] << "*" << endl;
 	cout << "Required Instruction: *" << required_instruction << "*" << endl;
-	if(byte == 1)
+	if (byte == 1)
 	{
 		// cout << "No value in operand1 and operand2" << endl;
-		for(i = 0; i < SIZE1; i++)
+		for (i = 0; i < SIZE1; i++)
 		{
-			if(required_instruction == oneByteCode[i])
+			if (required_instruction == oneByteCode[i])
 			{
 				cout << "HAhahaha 1 byte here" << endl;
-				hexCode[hexIndex] = oneByteHex[i];				// Assign corresponging op-code 
+				hexCode[hexIndex] = oneByteHex[i]; // Assign corresponging op-code
 				hexIndex++;
 			}
 		}
 	}
-	else if(byte == 2)
+	else if (byte == 2)
 	{
-		for(i = 0; i < SIZE2; i++)
+		for (i = 0; i < SIZE2; i++)
 		{
-			if(required_instruction == twoByteCode[i])
+			if (required_instruction == twoByteCode[i])
 			{
 				cout << "Hahahaha 2 byte here****************************" << endl;
-				hexCode[hexIndex] = twoByteHex[i];				// Assign corresponging op-code 
+				hexCode[hexIndex] = twoByteHex[i]; // Assign corresponging op-code
 				hexIndex++;
-				hexCode[hexIndex] = data;						// Assign corresponging op-code 
+				hexCode[hexIndex] = data; // Assign corresponging op-code
 				hexIndex++;
 			}
 		}
 	}
-	else if(byte == 3)
+	else if (byte == 3)
 	{
-		for(i = 0; i < SIZE3; i++)
+		for (i = 0; i < SIZE3; i++)
 		{
-			if(required_instruction == threeByteCode[i])
+			if (required_instruction == threeByteCode[i])
 			{
 				cout << "Hahahaha 3 byte here****************************" << endl;
-				hexCode[hexIndex] = threeByteHex[i];			// Assign corresponging op-code 
+				hexCode[hexIndex] = threeByteHex[i]; // Assign corresponging op-code
 				hexIndex++;
-				hexCode[hexIndex] = addressLow;					// Assign corresponging op-code 
+				hexCode[hexIndex] = addressLow; // Assign corresponging op-code
 				hexIndex++;
-				hexCode[hexIndex] = addressHigh;				// Assign corresponging op-code 
+				hexCode[hexIndex] = addressHigh; // Assign corresponging op-code
 				hexIndex++;
 			}
 		}
@@ -233,19 +237,16 @@ void display_instruct_address()
 void print_hexadecimal(string hex)
 {
 	display_instruct_address();
-	
 }
 
 void strupr(string &str)
 {
-	for_each(str.begin(), str.end(), [](char & ch) 
-	{
-        ch = ::toupper(ch);
-    });
+	for_each(str.begin(), str.end(), [](char &ch)
+			 { ch = ::toupper(ch); });
 }
 // void strlwr(string &str)
 // {
-// 	for_each(str.begin(), str.end(), [](char & ch) 
+// 	for_each(str.begin(), str.end(), [](char & ch)
 // 	{
 //         ch = ::tolower(ch);
 //     });
@@ -255,9 +256,9 @@ char *get_name_of(string str)
 	int i;
 	cout << "Enter assembly file name: ";
 	getline(cin, str);
-	for(i = 0; i < str.length(); i++)
-	{	// 'string' string's character value stored in 'char *' string's index
-		fName[i] = str[i];				
+	for (i = 0; i < str.length(); i++)
+	{ // 'string' string's character value stored in 'char *' string's index
+		fName[i] = str[i];
 	}
 	fName[i] = '\0';
 	return fName;
@@ -265,30 +266,34 @@ char *get_name_of(string str)
 int main()
 {
 	initialize_instruction_set();
-	enum programCounter{opCode, firstOperand, secondOperand};
+	enum programCounter
+	{
+		opCode,
+		firstOperand,
+		secondOperand
+	};
 	int i = 0, j = 0, k = 0, index = 0, mnemoNum = 0, op1Num = 0, op2Num = 0, programCounter = opCode;
 	string instruction, file_name, mnemonic, operand1, operand2;
 	instruction.resize(50);
-	mnemonic.resize(20);						// Setting string size
+	mnemonic.resize(20); // Setting string size
 	char data = 's';
 
-	
 	// FILE *fp1 = fopen(get_name_of(file_name), "r");
 	FILE *fp2 = fopen("Transfer.txt", "r");
-	if(fp2 == NULL)
+	if (fp2 == NULL)
 	{
 		cout << "Error Opening file..." << endl;
 		exit(0);
 	}
-	while((data = getc(fp2)) != EOF)
+	while ((data = getc(fp2)) != EOF)
 	{
-		if(data == '\n')
+		if (data == '\n')
 		{
 			instruction[index] = ' ';
 			instruction.push_back('\0');
 			string program = instruction;
 			instruction = "\0";
-			strupr(program);										// Uppercasing instruction for flexibility
+			strupr(program); // Uppercasing instruction for flexibility
 			programCounter = opCode;
 			mnemonic = "\0";
 			operand1 = "\0";
@@ -303,46 +308,48 @@ int main()
 			operand1.resize(10);
 			operand2.resize(10);
 
-			for(int l = 0; l < program.length(); l++)
+			for (int l = 0; l < program.length(); l++)
 			{
-				if((program[l] == ' ') || (program[l] == ',') || (program[l] == '\t'))
+				if ((program[l] == ' ') || (program[l] == ',') || (program[l] == '\t'))
 				{
-					if((program[l-1] != ',') && (program[l-1] != ' ') && (program[l-1] != '\t'))
+					if ((program[l - 1] != ',') && (program[l - 1] != ' ') && (program[l - 1] != '\t'))
 					{
-						if(programCounter == opCode)
+						if (programCounter == opCode)
 						{
 							mnemonic[i] = '\0';
-							cout << "mnemonic: " << "*" << mnemonic << "*" << endl;
+							cout << "mnemonic: "
+								 << "*" << mnemonic << "*" << endl;
 							programCounter++;
 						}
-						else if(programCounter == firstOperand)
+						else if (programCounter == firstOperand)
 						{
 							operand1[j] = '\0';
-							cout << "operand1: " << "*" << operand1 << "*"<< endl;
+							cout << "operand1: "
+								 << "*" << operand1 << "*" << endl;
 							programCounter++;
 						}
-						else if(programCounter == secondOperand)
+						else if (programCounter == secondOperand)
 						{
 							operand2[k] = '\0';
-							cout << "operand2: " << "*" << operand2 << "*" << endl;
+							cout << "operand2: "
+								 << "*" << operand2 << "*" << endl;
 							programCounter = opCode;
 						}
 					}
-
 				}
 				else
 				{
-					if(programCounter == opCode)
+					if (programCounter == opCode)
 					{
 						mnemonic[i] = program[l];
 						i++;
 					}
-					else if(programCounter == firstOperand)
+					else if (programCounter == firstOperand)
 					{
 						operand1[j] = program[l];
 						j++;
 					}
-					else if(programCounter == secondOperand)
+					else if (programCounter == secondOperand)
 					{
 						operand2[k] = program[l];
 						k++;
@@ -350,8 +357,8 @@ int main()
 				}
 			}
 			// cout << "Mnemonic: " << mnemonic << "\t" << "Operand1: " << operand1 << "\t" << "Operand2: " << "*" << operand2 << "*" << endl;
-			if(mnemonic[0] == '\0')
-			{// Do nothing, if no instruction detected
+			if (mnemonic[0] == '\0')
+			{ // Do nothing, if no instruction detected
 				continue;
 			}
 			else
@@ -367,7 +374,7 @@ int main()
 			index++;
 		}
 	}
-	for(i = 0; i < 20; i++)
+	for (i = 0; i < 20; i++)
 	{
 		cout << hex << uppercase << hexCode[i] << endl;
 	}
@@ -785,9 +792,9 @@ void initialize_instruction_set()
 	oneByteHex[199] = 0xAD;
 	oneByteHex[200] = 0xAE;
 	oneByteHex[201] = 0xE3;
-	
+
 	// Initialize 2 byte Mnemonics Array
-	
+
 	twoByteCode[0] = "ACI";
 	twoByteCode[1] = "ADI";
 	twoByteCode[2] = "ANI";
