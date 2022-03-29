@@ -116,25 +116,25 @@ int main()
 						if (PC == labelCode)
 						{
 							label[x] = '\0';
-							cout << "label: " << "*" << label << "*" << endl;
+							// cout << "label: " << "*" << label << "*" << endl;
 							PC++;
 						}
 						else if (PC == opCode)
 						{
 							mnemonic[i] = '\0';
-							cout << "mnemonic: " << "*" << mnemonic << "*" << endl;
+							// cout << "mnemonic: " << "*" << mnemonic << "*" << endl;
 							PC++;
 						}
 						else if (PC == firstOperand)
 						{
 							operand1[j] = '\0';
-							cout << "operand1: " << "*" << operand1 << "*"<< endl;
+							// cout << "operand1: " << "*" << operand1 << "*"<< endl;
 							PC++;
 						}
 						else if (PC == secondOperand)
 						{
 							operand2[k] = '\0';
-							cout << "operand2: " << "*" << operand2 << "*" << endl;
+							// cout << "operand2: " << "*" << operand2 << "*" << endl;
 							PC = opCode;
 						}
 					}
@@ -174,7 +174,7 @@ int main()
 		}
 		else
 		{
-			cout << "Data: " << data << endl;
+			// cout << "Data: " << data << endl;
 			instruction[index] = data;
 			index++;
 		}
@@ -536,13 +536,13 @@ char *get_name_of(string str)
 	cout << "\n\n**********Program to convert Assembmly Language into Hex Code**********\n\n" << endl;
 	// usleep(milliseconds * 1000);
 	cout << "How to use this software?\n" << endl;
-	usleep(2000 * 1000);
+	usleep(1000 * 1000);
 	cout << "1) Create a (.txt)text file in same location" << endl;
-	usleep(1000 * 1000);
+	usleep(500 * 1000);
 	cout << "2) Copy your assembly code into the text file" << endl;
-	usleep(1000 * 1000);
+	usleep(500 * 1000);
 	cout << "3) Provide text file name and get your hex code\n" << endl;
-	usleep(1000 * 1000);
+	usleep(500 * 1000);
 	cout << "Enter your assembly code text file name(with Extension): ";
 	getline(cin, str);
 	for (i = 0; i < str.length(); i++)

@@ -39,11 +39,13 @@ public:
 };
 int main()
 {
-    //Array <char> obj;
+    // Array <char> obj;   
+    // 
     Array <double> obj;
 
-    //char value;
+    // char value;                           // Character can also be sorted using ASCII value
     double value;
+    cout << "Enter 5 elements of an array: ";
     for(int i = 0; i < 5; i++)
     {
         cin >> value;

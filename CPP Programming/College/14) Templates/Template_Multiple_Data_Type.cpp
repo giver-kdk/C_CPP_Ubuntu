@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
-
 // 'Type' will act as a data type here. It can denote integer, float or double according to parameter
 template <class Type1, class Type2> 
 // This function returns whatever data-type is 'Type2'
