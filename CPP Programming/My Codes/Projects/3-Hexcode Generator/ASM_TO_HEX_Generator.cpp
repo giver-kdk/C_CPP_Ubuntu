@@ -266,11 +266,9 @@ void set_high_low_address(string operand, int &addressHigh, int &addressLow)
 	clean_string(subCode1);
 	clean_string(subCode2);
 	// Convert separated string into hex value
-	// subCode1.pop_back();
 	istringstream higherValue(subCode1);
 	higherValue >> hex >> addressHigh;
 
-	// subCode2.pop_back();
 	istringstream lowerValue(subCode2);
 	lowerValue >> hex >> addressLow;
 }
