@@ -8,7 +8,7 @@ int add(int num)
 	num = num + 20;
 	return num;
 }
-int add(double num)
+double add(double num)
 {
 	num = num + 30;
 	return num;
@@ -18,7 +18,7 @@ int add(int num1, int num2)
 	int sum = num1 + num2;
 	return sum;
 }
-int add(double num1, double num2)
+double add(double num1, double num2)
 {
 	double sum = num1 + num2;
 	return sum;

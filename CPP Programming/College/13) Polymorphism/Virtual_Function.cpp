@@ -23,7 +23,7 @@ class Rectangle : public Shape
 {
 public:
 	Rectangle(int l, int b) : Shape(l, b) {}
-	virtual void area()
+	void area()
 	{
 		cout << "Area: " << length * breadth << endl;
 	}

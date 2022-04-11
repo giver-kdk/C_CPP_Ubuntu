@@ -1,0 +1,24 @@
+1234
+Student ID: 1234
+Student Name: Ram
+Roll Number: 12
+Section: A
+Program: CSIT
+Semester: First
+
+2345
+Student ID: 2345
+Student Name: Hari
+Roll Number: 6
+Section: B
+Program: BBA
+Semester: Third
+
+3456
+Student ID: 3456
+Student Name: Gita
+Roll Number: 3
+Section: A
+Program: BCA
+Semester: Second
+

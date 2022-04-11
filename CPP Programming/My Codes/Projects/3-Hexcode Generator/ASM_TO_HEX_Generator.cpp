@@ -9,6 +9,7 @@ Date: 2022-March-27 */
 #include <algorithm>
 #include <time.h>
 #include <unistd.h>
+#include <bitset>
 
 #define SIZE1 202			// No. of 1 byte instructions
 #define SIZE2 18			// No. of 2 byte instructions
@@ -33,7 +34,7 @@ using namespace std;
 
 char fName[20];
 int oneByteHex[250], twoByteHex[50], threeByteHex[50];		 // Store all hex values
-string oneByteCode[250], twoByteCode[50], threeByteCode[50]; // Store all istructions
+string oneByteCode[250], twoByteCode[50], threeByteCode[50]; // Store all instructions
 int labelAddress[MAX_LABEL], labelIndex = 0;
 string labelName[MAX_LABEL];	 // Store detected labels
 int hexCode[1000], hexIndex = 0; // Store final hex values
@@ -62,8 +63,11 @@ int main()
 	};
 	int x = 0, i = 0, j = 0, k = 0, index = 0, PC = opCode; // PC = Program Counter
 	string instruction, file_name, label, mnemonic, operand1, operand2;
+	// Resize to reserve space
 	instruction.resize(50);
 	mnemonic.resize(20);
+	operand1.resize(20);
+	operand2.resize(20);
 	FILE *fp1 = fopen(get_name_of(file_name), "r"); // User inputs filename
 	if (fp1 == NULL)
 	{
@@ -512,6 +516,7 @@ void print_hexadecimal()
 	for (int i = 0; i < hexIndex; i++)
 	{
 		display_instruct_address();
+		// cout << setw(2) << setfill('0') << bitset<8>(hexCode[i]) << endl;
 		cout << setw(2) << setfill('0') << hex << uppercase << hexCode[i] << endl;
 	}
 }

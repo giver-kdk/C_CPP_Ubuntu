@@ -40,7 +40,7 @@ public:
 int main()
 {
     // Array <char> obj;   
-    // 
+    // <double> specifies the data type to apply on template class
     Array <double> obj;
 
     // char value;                           // Character can also be sorted using ASCII value
@@ -57,4 +57,3 @@ int main()
     obj.sort();
     obj.display();
 }
-

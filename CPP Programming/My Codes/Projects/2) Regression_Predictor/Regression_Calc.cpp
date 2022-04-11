@@ -99,9 +99,9 @@ void regression_maths(int num, double EX, double EY, double EXY, double EX2, dou
 		cout << endl;
 	}
 	cout << endl;
-	// 'std::left' left aligns the output
-	cout << std::left << "EX = " << setw(15) << EX << "EY = " << setw(15) << EY;
-	cout << std::left << "EXY = " << setw(14) << EXY << "EX^2 = " << setw(13) << EX2 << "EY^2 = " << setw(15) << EY2 << endl;
+	// 'left' aligns the output to left side
+	cout << left << "EX = " << setw(15) << EX << "EY = " << setw(15) << EY;
+	cout << left << "EXY = " << setw(14) << EXY << "EX^2 = " << setw(13) << EX2 << "EY^2 = " << setw(15) << EY2 << endl;
 	cout << "Mean of Y: " << (EY / num) << endl;
 	cout << "Regression model is: Y = a + b.X" << endl;
 	cout << "Using least square method, we get;" << endl;

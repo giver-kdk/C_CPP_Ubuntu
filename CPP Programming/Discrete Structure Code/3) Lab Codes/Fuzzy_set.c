@@ -1,4 +1,4 @@
-//WAP C program to find implement fuzzy set operation
+// WAP C program to find implement fuzzy set operation
 #include <stdio.h>
 #include <stdlib.h>
 float min(float a, float b);
@@ -11,8 +11,8 @@ int main()
 	scanf("%f", &fa);
 	printf("Enter membership function of second set: ");
 	scanf("%f", &fb);
-	fi=min(fa,fb);
-	fu=max(fa,fb);
+	fi = min(fa, fb);
+	fu = max(fa, fb);
 	fac = x - fa;
 	printf("The membership function of intersection: %0.1f\n", fi);
 	printf("The membership function of union: %0.1f\n", fu);
@@ -21,7 +21,7 @@ int main()
 }
 float min(float a, float b)
 {
-	if(a<b)
+	if (a < b)
 	{
 		return a;
 	}
@@ -32,7 +32,7 @@ float min(float a, float b)
 }
 float max(float a, float b)
 {
-	if(a>b)
+	if (a > b)
 	{
 		return a;
 	}
