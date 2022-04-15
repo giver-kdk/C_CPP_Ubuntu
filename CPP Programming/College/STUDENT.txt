@@ -1,0 +1,12 @@
+1234
+Name: Ram
+Roll number: 12
+Age: 19
+Grade: 12
+Section: A
+Symbol: 1234
+Marks: 300
+Address: Nepal
+Phone number: 9.81212e+09
+Date of Birth: 2019
+

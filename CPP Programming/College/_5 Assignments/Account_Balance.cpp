@@ -7,7 +7,7 @@ class Account
 {
 	int accNo;
 	double balance;
-	static double minBalance;
+	static double minBalance, counter;
 	public:
 		void fill_info()
 		{
@@ -15,6 +15,18 @@ class Account
 			cin >> accNo;
 			cout << "Enter account balance: ";
 			cin >> balance;
+			counter++;
+			if(counter == 1)
+			{
+				minBalance = balance;
+			}
+			else
+			{
+				if(minBalance > balance)
+				{
+					minBalance = balance;
+				}
+			}
 		}
 		void display()
 		{
@@ -27,7 +39,8 @@ class Account
 			cout << "Minimum balance: " << minBalance << endl;
 		}
 };
-double Account :: minBalance = 5000;  
+double Account :: minBalance;   
+double Account :: counter;   
 
 int main()
 {
@@ -40,7 +53,7 @@ int main()
 	for(i = 0; i < NUM; i++)
 	{
 		bank[i].display();
-		Account::show_min_balance();
 	}
+	Account::show_min_balance();
 	return 0;
 }

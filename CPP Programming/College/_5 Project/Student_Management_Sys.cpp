@@ -103,6 +103,7 @@ void register_students()
 		int number, i;
 		cout << "Enter the number of students to add: ";
 		cin >> number;
+		// Write in File
 		for(i = 0; i < number; i++)
 		{
 			stu.registration();
