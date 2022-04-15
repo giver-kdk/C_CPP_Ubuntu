@@ -151,10 +151,10 @@ int main()
                     getline(stu, str);
                     cout << str << endl;
                }
-			   return 0;
+                cout << endl;
+                stu.close();
+                return 0;
             }
-            cout << endl;
-            stu.close();
         }
         cout << "NOT FOUND." << endl;
     }
