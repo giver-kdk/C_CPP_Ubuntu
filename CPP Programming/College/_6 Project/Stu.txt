@@ -1,0 +1,26 @@
+1234
+Symbol: 1234
+Name: Ram
+Roll number: 12
+Age: 19
+Grade: 11
+Section: A
+Address: Nepal
+Phone number: 982121
+Date of Birth: 2019
+Marks: 300
+Percentage: 60%
+
+2345
+Symbol: 2345
+Name: Hari
+Roll number: 34
+Age: 19
+Grade: 12
+Section: B
+Address: India
+Phone number: 9.82234e+06
+Date of Birth: 2020
+Marks: 300
+Percentage: 60%
+
