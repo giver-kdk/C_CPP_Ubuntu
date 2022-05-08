@@ -27,6 +27,6 @@ int main()
 		cout << "Divide by zero error" << endl;
 		cout << error << endl;
 	}
-	cout << "Hello World" << endl;
+	cout << "Program Completed!" << endl;
 	return 0;
 }

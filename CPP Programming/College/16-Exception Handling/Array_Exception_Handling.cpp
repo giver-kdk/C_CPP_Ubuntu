@@ -1,3 +1,4 @@
+// Program to handle exception when we try to enter more elements than the array size
 #include <iostream>
 
 using namespace std;
