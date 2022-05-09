@@ -1,0 +1,2 @@
+This is a file
+This is an added file content
