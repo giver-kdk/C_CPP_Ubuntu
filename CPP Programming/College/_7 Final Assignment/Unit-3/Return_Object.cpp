@@ -10,13 +10,22 @@ class Singer
 		string genre;
 		Singer(string n, string a, string g) : name(n), album(a), genre(g){}
 };
-string get_genre(Singer obj)
+Singer get_genre(Singer obj1, Singer obj2)
 {
-	return obj.genre;
+	if(obj1.genre == "Hip-Hop")
+	{
+		return obj1;
+	}
+	else
+	{
+		return obj2;
+	}
 }
 int main()
 {
 	Singer American("Lil Nas X", "Montero", "Hip-Hop");
-	cout << "Genre is: " << get_genre(American) << endl;
+	Singer Indian("Arijit Singh", "Arijit", "Indian Pop");
+	// Detect Hip-Hop Genre
+	cout << "Genre is: " << get_genre(American, Indian).genre << endl;
 	return 0;
 }

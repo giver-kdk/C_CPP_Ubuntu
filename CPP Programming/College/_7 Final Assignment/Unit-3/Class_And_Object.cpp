@@ -6,7 +6,7 @@ class Astronaut
 {
 	string name;
 	int id;
-	char role;
+	string role;
 	public:
 		void input()
 		{
@@ -14,8 +14,9 @@ class Astronaut
 			getline(cin, name);
 			cout << "Enter id: ";
 			cin >> id;
+			cin.ignore();
 			cout << "Enter role: ";
-			cin >> role;
+			getline(cin, role);
 		}
 		void display()
 		{

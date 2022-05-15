@@ -4,5 +4,5 @@ using namespace std;
 
 int main()
 {
-	cout<<setw(30)<<setfill('$')<<"Time is the forth dimension!"<<endl;			
+	cout<<setw(35)<<setfill('$')<<"Time is the forth dimension!"<<endl;			
 }

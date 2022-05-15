@@ -5,19 +5,20 @@ using namespace std;
 
 void test_error(fstream &obj)
 {
-	if(obj.eof())
+	// Error functions return 1 if true
+	if (obj.eof())
 	{
 		cout << "End of File reached" << endl;
 	}
-	if(obj.fail())
+	if (obj.fail())
 	{
 		cout << "Logical Error in file handling" << endl;
 	}
-	if(obj.bad())
+	if (obj.bad())
 	{
 		cout << "Read/Write Error in file handling" << endl;
 	}
-	if(obj.good())
+	if (obj.good())
 	{
 		cout << "No Logical Errors" << endl;
 	}
@@ -32,15 +33,15 @@ int main()
 	file.open("File.txt", ios::in);
 	test_error(file);
 
-	getline(file, data);		// Read entire line
+	getline(file, data); // Read entire line
 	test_error(file);
 
-	getline(file, data);		// No data left to read
+	getline(file, data); // No data left to read
 	test_error(file);
 	file.close();
 
 	// Manually set badbit to simulate read/write failure
-	file.clear (file.badbit);	// This is set automatically when error actually happens
+	file.clear(file.badbit); // This is set automatically when error actually happens
 	test_error(file);
 	return 0;
 }

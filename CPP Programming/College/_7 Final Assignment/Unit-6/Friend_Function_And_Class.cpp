@@ -11,9 +11,9 @@ class Defense
 	public:
 		Defense(){}
 		friend class Army;
-		friend void input(Defense &obj);
+		friend void input(Defense obj);
 };
-void input(Defense &obj)
+void input(Defense obj)
 {
 	cout << "Enter name: ";
 	getline(cin, obj.name);
@@ -26,7 +26,7 @@ class Army
 {
 	public:
 		Army(){}
-		void display(Defense &obj)
+		void display(Defense obj)
 		{
 			cout << "Name: " << obj.name << endl;
 			cout << "Post: " << obj.post << endl;

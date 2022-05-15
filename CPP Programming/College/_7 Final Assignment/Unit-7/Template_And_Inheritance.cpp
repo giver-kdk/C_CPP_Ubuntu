@@ -21,7 +21,8 @@ class MiniData : public Data <Type>
 		MiniData(Type a, Type b) : Data <Type> (a), miniValue(b){};
 		void show_mini()
 		{
-			this->show_data();
+			Data <Type> :: show_data();
+			// this->show_data();				// This is also valid
 			cout << "The mini data is: " << miniValue << endl;
 		}
 };

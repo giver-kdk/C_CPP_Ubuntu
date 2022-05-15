@@ -34,7 +34,7 @@ int main()
 	cout <<endl << "Press CTRL + Y to finish writing." << endl << endl;
 	cout << "Enter text to save in file: ";
 	cin >> ch;
-	while(ch != 25)
+	while(ch != 25)				// 25 means End of Medium
 	{
 		file1.put(ch);
 		cin >> ch;
