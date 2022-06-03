@@ -11,10 +11,12 @@ class Score
 		{
 			cout << "Score count is: " << count << endl;
 		}
+		// Prefix operator overload
 		void operator ++()
 		{
 			++count;
 		}
+		// Postfix operator overload
 		void operator ++(int)
 		{
 			count++;

@@ -21,7 +21,7 @@ class Child : public Parent
 int main()
 {
 	Child c1;
-	c1.display();
+	c1.display();				// Function overwritten here
 	c1.Parent::display();
 	return 0;
 }

@@ -11,12 +11,14 @@ class Score
 		{
 			cout << "Score is: " << count << endl;
 		}
+		// Since, we get a result after adding two operands. So, we return an object
 		Score operator +(Score obj)
 		{
 			Score temp(0);
 			temp.count = count + obj.count;
 			return temp;
 		}
+		// Compare data members and return corresonding boolen value 
 		bool operator ==(Score obj)
 		{
 			if(count == obj.count)
@@ -30,7 +32,7 @@ class Score
 		}
 		void operator =(Score obj)
 		{
-			count = obj.count;
+			count = obj.count;			// Simply assign corresponding data member
 		}
 };
 

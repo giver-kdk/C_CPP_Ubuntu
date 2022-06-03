@@ -1,4 +1,4 @@
-/* Program to convert 8085 Micrproccessor's Assembly Program into Hexadecimal Value.
+/* Program to convert 8085 Micrproccessor's Assembly Language into Hexadecimal Value.
 Author: Giver Khadka
 Date: 2022-March-27 */
 #include <iostream>
@@ -771,30 +771,30 @@ void initialize_instruction_set()
 
 	// Initialize corresponging hex code in an array
 
-	oneByteHex[0] = 0xCD;
-	oneByteHex[1] = 0xDC;
-	oneByteHex[2] = 0xFC;
-	oneByteHex[3] = 0x8F;
-	oneByteHex[4] = 0x88;
-	oneByteHex[5] = 0x89;
-	oneByteHex[6] = 0x8A;
-	oneByteHex[7] = 0x8B;
-	oneByteHex[8] = 0x8C;
-	oneByteHex[9] = 0x8D;
-	oneByteHex[10] = 0x8E;
-	oneByteHex[11] = 0x87;
-	oneByteHex[12] = 0x80;
-	oneByteHex[13] = 0x81;
-	oneByteHex[14] = 0x82;
-	oneByteHex[15] = 0x83;
-	oneByteHex[16] = 0x84;
-	oneByteHex[17] = 0x85;
-	oneByteHex[18] = 0x86;
-	oneByteHex[19] = 0xA7;
-	oneByteHex[20] = 0xA0;
-	oneByteHex[21] = 0xA1;
-	oneByteHex[22] = 0xA2;
-	oneByteHex[23] = 0xA3;
+	oneByteHex[0] = 0x8F;
+	oneByteHex[1] = 0x88;
+	oneByteHex[2] = 0x89;
+	oneByteHex[3] = 0x8A;
+	oneByteHex[4] = 0x8B;
+	oneByteHex[5] = 0x8C;
+	oneByteHex[6] = 0x8D;
+	oneByteHex[7] = 0x8E;
+	oneByteHex[8] = 0x87;
+	oneByteHex[9] = 0x80;
+	oneByteHex[10] = 0x81;
+	oneByteHex[11] = 0x82;
+	oneByteHex[12] = 0x83;
+	oneByteHex[13] = 0x84;
+	oneByteHex[14] = 0x85;
+	oneByteHex[15] = 0x86;
+	oneByteHex[16] = 0xA7;
+	oneByteHex[17] = 0xA0;
+	oneByteHex[18] = 0xA1;
+	oneByteHex[19] = 0xA2;
+	oneByteHex[20] = 0xA3;
+	oneByteHex[21] = 0xA4;
+	oneByteHex[22] = 0xA5;
+	oneByteHex[23] = 0xA6;
 	oneByteHex[24] = 0x2F;
 	oneByteHex[25] = 0x3F;
 	oneByteHex[26] = 0xBF;

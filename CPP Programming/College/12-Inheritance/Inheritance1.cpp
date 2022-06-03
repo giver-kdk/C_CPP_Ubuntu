@@ -38,4 +38,7 @@ int main()
 	cout << "x: " << c.x << endl;
 	cout << "y: " << c.y << endl;
 	cout << "b: " << c.get_protected() << endl;
+	p.y = 30;
+	cout << "y: " << p.y << endl;
+
 }
