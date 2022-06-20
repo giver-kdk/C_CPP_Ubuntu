@@ -29,7 +29,5 @@ int main()
 	{
 		cout << e << endl;
 	}
-	
-	
 	return 0;
 }

@@ -7,22 +7,22 @@ using namespace std;
 
 class Student
 {
-	public:
-	// Character array usd as string to have fixed size in memory
+public:
+	// Character array used as string to have fixed size in memory
 	char name[20];
 	int roll_num;
-		void input_info()
-		{
-			cout << "Enter student name: ";
-			cin.getline(name,30);
-			cout << "Enter roll number: ";
-			cin >> roll_num;
-		}
-		void get_info()
-		{
-			cout << "Name: " << name << endl;
-			cout << "Roll Number: " << roll_num << endl;
-		}
+	void input_info()
+	{
+		cout << "Enter student name: ";
+		cin.getline(name, 30);
+		cout << "Enter roll number: ";
+		cin >> roll_num;
+	}
+	void get_info()
+	{
+		cout << "Name: " << name << endl;
+		cout << "Roll Number: " << roll_num << endl;
+	}
 };
 
 int main()
@@ -31,10 +31,12 @@ int main()
 	ofstream file1;
 	file1.open("File1.txt", ios::out);
 	char ch;
-	cout <<endl << "Press CTRL + Y to finish writing." << endl << endl;
+	cout << endl
+		 << "Press CTRL + Y to finish writing." << endl
+		 << endl;
 	cout << "Enter text to save in file: ";
 	cin >> ch;
-	while(ch != 25)				// 25 means End of Medium
+	while (ch != 25) // 25 means End of Medium
 	{
 		file1.put(ch);
 		cin >> ch;
@@ -46,7 +48,7 @@ int main()
 	file2.open("File1.txt", ios::in);
 	cout << "Content inside file is: " << endl;
 	file2.get(ch);
-	while(!file2.eof())
+	while (!file2.eof())
 	{
 		cout << ch;
 		file2.get(ch);
@@ -62,14 +64,14 @@ int main()
 	s1.input_info();
 	ofstream file3;
 	file3.open("File2.txt", ios::out);
-	file3.write((char *) &s1, sizeof(s1));	
+	file3.write((char *)&s1, sizeof(s1));
 	cout << "File written successfully!" << endl;
-	file3.close();	
+	file3.close();
 
 	// File Reading using read()
 	ifstream file4;
 	file4.open("File2.txt", ios::in);
-	file4.read((char *) &s2, sizeof(s2));
+	file4.read((char *)&s2, sizeof(s2));
 	cout << "File content are: " << endl;
 	s2.get_info();
 	file4.close();

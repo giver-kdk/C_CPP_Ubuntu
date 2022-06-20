@@ -10,6 +10,7 @@ protected:
 	int breadth;
 
 public:
+	Shape() {}
 	Shape(int l, int b) : length(l), breadth(b) {}
 	// Creating virtual function in Parent Class
 	virtual void area()

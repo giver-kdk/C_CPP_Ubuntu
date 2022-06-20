@@ -12,6 +12,10 @@ public:
 	{
 		arr = new Ttype[size];
 	}
+	~Array()
+	{
+		delete []arr;
+	}
 	void input()
 	{
 		for(int i = 0; i < size; i++)
