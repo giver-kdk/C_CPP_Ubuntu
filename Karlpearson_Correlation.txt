@@ -25,4 +25,6 @@ Residual = SSE
 Total = TSS
 Intercept = a
 X variable1 = b
+
+Check out graph for regression after data analysis
 -Mostly question from regression
