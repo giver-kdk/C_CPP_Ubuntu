@@ -19,4 +19,10 @@
 
 1) Do correlation and data analysis
 2) Do regression using XY, X^2, Y^2, TSS, SSE, SSR, SSE, R^2. Also, do data analysis: Data Analysis->Regression->InputRange for Y and X->OutputRange
+NOTE: In Data Analysis;
+Regression = SSR
+Residual = SSE
+Total = TSS
+Intercept = a
+X variable1 = b
 -Mostly question from regression
