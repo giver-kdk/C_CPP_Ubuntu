@@ -1,0 +1,15 @@
+-Karlpearson Correlation Coefficient
+-r = ...
+-PE = ...
+-Limit of correlation
+-Co-efficient of Determination (Interpretation)
+
+
+
+-Correlation is simple variance between two or more than two variables
+-But, regression shows cause and effect variance
+
+-Value of correlation lies between -1 and +1 (+ve means positive correlation(same direction change) and -ve means negative correlation(opposite direction change)
+-Simple Correlation
+-Multiple Correlation
+-Partial Correlation
