@@ -1047,9 +1047,9 @@ void initialize_instruction_set()
 
 	// Initialize corresponging hex code in an array
 
-	threeByteHex[0] = 0xA4;
-	threeByteHex[1] = 0xA5;
-	threeByteHex[2] = 0xA6;
+	threeByteHex[0] = 0xCD;
+	threeByteHex[1] = 0xDC;
+	threeByteHex[2] = 0xFC;
 	threeByteHex[3] = 0xD4;
 	threeByteHex[4] = 0xC4;
 	threeByteHex[5] = 0xF4;
