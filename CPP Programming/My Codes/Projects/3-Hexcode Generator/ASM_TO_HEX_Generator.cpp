@@ -138,25 +138,25 @@ int main()
 						if (PC == labelCode)
 						{
 							label[x] = '\0';
-							cout << "label: " << "*" << label << "*" << endl;
+							// cout << "label: " << "*" << label << "*" << endl;
 							PC++;
 						}
 						else if (PC == opCode)
 						{
 							mnemonic[i] = '\0';
-							cout << "mnemonic: " << "*" << mnemonic << "*" << endl;
+							// cout << "mnemonic: " << "*" << mnemonic << "*" << endl;
 							PC++;
 						}
 						else if (PC == firstOperand)
 						{
 							operand1[j] = '\0';
-							cout << "operand1: " << "*" << operand1 << "*"<< endl;
+							// cout << "operand1: " << "*" << operand1 << "*"<< endl;
 							PC++;
 						}
 						else if (PC == secondOperand)
 						{
 							operand2[k] = '\0';
-							cout << "operand2: " << "*" << operand2 << "*" << endl;
+							// cout << "operand2: " << "*" << operand2 << "*" << endl;
 							PC = opCode;
 						}
 					}
@@ -196,7 +196,7 @@ int main()
 		}
 		else
 		{
-			cout << "Data: " << data << endl;
+			// cout << "Data: " << data << endl;
 			instruction[index] = data;
 			index++;
 		}
@@ -440,7 +440,7 @@ void asm_to_hex(string instruct, string label, string mnemonic, string operand1,
 		}
 		// cout << "Value in operand1 and operand2" << endl;
 	}
-	cout << "Required instruction: " << required_instruction << endl;
+	// cout << "Required instruction: " << required_instruction << endl;
 	clean_string(required_instruction);
 	// Use corresponding opcode for detected byte of instruction
 	if (byte == 1)
