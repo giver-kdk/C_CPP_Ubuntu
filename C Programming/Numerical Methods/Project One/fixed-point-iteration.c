@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <math.h>
 
+#define f(x) (x*x - 5*x +6)
 #define g(x) (-6 / (x - 5))
 #define e 0.00001
 
-void main()
+int main()
 {
-    float x, x0, x1, error;
+    float x0, x1, error;
 here:
     printf("enter one initial guesses: ");
     scanf("%f", &x0);

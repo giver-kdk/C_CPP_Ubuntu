@@ -4,9 +4,9 @@
 #define f(x) (x * x - 4 * x - 9)
 #define e 0.00001
 
-void main()
+int main()
 {
-    float x, x0, x1, error;
+    float x2, x0, x1, error;
 here:
     printf("enter the two initial guesses: ");
     scanf("%f%f", &x0, &x1);
@@ -17,15 +17,15 @@ here:
         goto here;
     }
 next:
-    x = x0 - (f(x0) * (x1 - x0)) / (f(x1) - f(x0));
-    error = fabs(f(x));
-    if (f(x) * f(x0) < 0)
+    x2 = x0 - (f(x0) * (x1 - x0)) / (f(x1) - f(x0));
+    error = fabs(f(x2));
+    if (f(x2) * f(x1) < 0)
     {
-        x0 = x;
+        x0 = x2;
     }
     else
     {
-        x1 = x;
+        x1 = x2;
     }
     if (error > e)
     {
@@ -33,6 +33,6 @@ next:
     }
     else
     {
-        printf("required root is %f\n", x);
+        printf("required root is %f\n", x2);
     }
 }
