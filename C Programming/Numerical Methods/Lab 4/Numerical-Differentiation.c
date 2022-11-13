@@ -18,5 +18,4 @@ int main()
     f2 = ((f(x + h) + f(x - h) - (2 * f(x))) / (h * h));
     printf("The first derivative at x= %f and h= %f is %f\n", x, h, f1);
     printf("The second derivative at x= %f and h= %f is %f\n", x, h, f2);
-
 }
