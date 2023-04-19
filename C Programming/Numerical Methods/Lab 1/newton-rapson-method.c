@@ -6,9 +6,9 @@
 
 #define e 0.00001
 
-void main()
+int main()
 {
-    float x, x0, x1, error;
+    float x0, x1, error;
     here:
         printf("enter one initial guesses: ");
         scanf("%f", &x0);

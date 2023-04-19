@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <math.h>
 
-#define f(x) (x*x - 4*x -9)
+#define f(x) (x*x + 4*x + 9)
 #define e 0.00001
 
-void main()
+int main()
 {
     int i, n;
     float a[10], b[10], x0;
@@ -14,7 +14,6 @@ void main()
 
         printf("enter the point of evaluation: ");
         scanf("%f", &x0);
-
         for(i = 0; i <= n; i++)
         {
             printf("enter the co-efficient of a[%d]: ", i);
