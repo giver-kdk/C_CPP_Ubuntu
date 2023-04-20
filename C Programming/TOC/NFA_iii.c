@@ -81,7 +81,7 @@ int main()
 		state[lenX++] = initial;
 		for (i = 0; string[i] != '\0'; i++)
 		{
-			int totalStates[50], len;
+			int totalState[50], len;
 			k = lenX;
 			lenY = 0;
 			for (j = 0; j < k; j++)
@@ -106,11 +106,11 @@ int main()
 					tq3(string[i]);
 					len = len3;
 				}
-				merge_states(totalStates, newState, lenY, len);
+				merge_states(totalState, newState, lenY, len);
 			}
 			for (l = 0; l < lenX; l++)
 			{
-				state[l] = totalStates[l];
+				state[l] = totalState[l];
 			}
 		}
 		for (i = 0; i < lenX; i++)
