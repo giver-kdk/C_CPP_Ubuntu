@@ -53,11 +53,9 @@ void merge_states(int array1[50], int array2[50], int n1, int n2)
 	{
 		for (j = 0; j < n1; j++)
 		{
-			if (array1[j] == array2[i])
-				break;
+			if (array1[j] == array2[i]) break;
 		}
-		if (j == n1)
-			array1[k++] = array2[i];
+		if (j == n1) array1[k++] = array2[i];
 	}
 	lenX = k;
 	lenY = k;
@@ -125,8 +123,7 @@ int main()
 				}
 			}
 		}
-		if (isAccepted == 0)
-			printf("\nString Rejected");
+		if (isAccepted == 0) printf("\nString Rejected");
 		printf("\nContinue? (Y/N): ");
 		scanf(" %c", &choice);
 	}
