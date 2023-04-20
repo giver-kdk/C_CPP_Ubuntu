@@ -59,8 +59,8 @@ int main()
 	{
 		int isAccepted = 0;
 		lenX = 0;
-		// fflush(stdin);
-		__fpurge(stdin); // Alternative of fflush(stdin);
+		fflush(stdin);
+		// __fpurge(stdin); // Alternative of fflush(stdin);
 		printf("Enter a string: ");
 		gets(string); 
 		// Initialize state

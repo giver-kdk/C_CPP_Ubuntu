@@ -66,14 +66,6 @@ void concat_array(int array1[50], int *array2, int len1, int len2)
 	s = j; // Updated Number of states
 	acc = j;
 }
-void printing(int array[], int len)
-{
-	int i;
-	for (i = 0; i < len; i++)
-	{
-		printf("%d", array[i]);
-	}
-}
 int main()
 {
 	int i, j, k, l;
@@ -84,8 +76,8 @@ int main()
 	{
 		int isAccepted = 0;
 		s = 0;
-		// fflush(stdin);
-		__fpurge(stdin); // Alternative of fflush(stdin);
+		fflush(stdin);
+		// __fpurge(stdin); // Alternative of fflush(stdin);
 		printf("Enter a string: ");
 		gets(string); // Reads Character even after whitespace
 
@@ -114,13 +106,7 @@ int main()
 					currentState = tq2(string[i]);
 					len = len2;
 				}
-				printf("%d\n", len);
-				printf("%d\n", acc);
 				concat_array(totalStates, currentState, acc, len);
-				printing(currentState, 4);
-				printf("\n");
-				printing(totalStates, 4);
-				printf("\n");
 			}
 			// printing(totalStates, s);
 			for (l = 0; l < s; l++)
