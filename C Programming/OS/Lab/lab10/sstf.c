@@ -30,6 +30,6 @@ int main()
 	printf("Total head movement is %d", TotalHeadMoment);
 	printf("\nName: Giver Khadka");
 	printf("\nRoll No.: 05");
-	printf("\nLab No.: 10b");
+	printf("\nLab No.: 10b\n");
 	return 0;
 }

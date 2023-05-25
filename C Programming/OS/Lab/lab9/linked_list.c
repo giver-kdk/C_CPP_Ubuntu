@@ -95,6 +95,6 @@ int main()
 	freeList(&head);
 	printf("\nName: Giver Khadka");
 	printf("\nRoll No.: 05");
-	printf("\nLab No.: 9b");
+	printf("\nLab No.: 9b\n");
 	return 0;
 }

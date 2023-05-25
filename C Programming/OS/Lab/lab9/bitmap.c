@@ -29,6 +29,6 @@ int main()
 	}
 	printf("\nName: Giver Khadka");
 	printf("\nRoll No.: 05");
-	printf("\nLab No.: 9a");
+	printf("\nLab No.: 9a\n");
 	return 0;
 }

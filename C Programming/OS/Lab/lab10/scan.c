@@ -77,7 +77,7 @@ int main()
 	printf("Average Seek Time= %f", avgSeekTime);
 	printf("\nName: Giver Khadka");
 	printf("\nRoll No.: 05");
-	printf("\nLab No.: 10c");
+	printf("\nLab No.: 10c\n");
 	return 0;
 }
 

@@ -1,4 +1,4 @@
-#include < stdio.h >  
+#include <stdio.h>  
 int main()  
 {  
     int incomingStream[] = {4 , 1 , 2 , 4 , 5};  
@@ -45,6 +45,6 @@ int main()
     printf("\nTotal Page Faults:\t%d", pageFaults);  
 	printf("\nName: Giver Khadka");
 	printf("\nRoll No.: 05");
-	printf("\nLab No.: 7a");
+	printf("\nLab No.: 7a\n");
     return 0;  
 }  

@@ -61,6 +61,6 @@ int main()
 	printf("\n No of page fault is:%d", c);
 	printf("\nName: Giver Khadka");
 	printf("\nRoll No.: 05");
-	printf("\nLab No.: 7b");
+	printf("\nLab No.: 7b\n");
 	return 0;
 }

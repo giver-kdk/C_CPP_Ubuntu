@@ -32,7 +32,7 @@ x:
 	{
 		printf("\nName: Giver Khadka");
 		printf("\nRoll No.: 05");
-		printf("\nLab No.: 8a");
+		printf("\nLab No.: 8a\n");
 		exit(0);
 	}
 	return 0;

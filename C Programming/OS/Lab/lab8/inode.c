@@ -79,6 +79,6 @@ int main()
 	display(&fs);
 	printf("\nName: Giver Khadka");
 	printf("\nRoll No.: 05");
-	printf("\nLab No.: 8d");
+	printf("\nLab No.: 8d\n");
 	return 0;
 }

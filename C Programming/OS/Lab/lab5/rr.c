@@ -139,5 +139,5 @@ int main()
 	printf("\nAverage Waiting Time:%d", avWT);
 	printf("\nName: Giver Khadka");
 	printf("\nRoll No.: 05");
-	printf("\nLab No.: 5d");
+	printf("\nLab No.: 5d\n");
 }

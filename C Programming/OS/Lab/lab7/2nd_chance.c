@@ -103,6 +103,6 @@ int main()
 	printf("\nTotal No. of Page faults =%d", pg_fault);
 	printf("\nName: Giver Khadka");
 	printf("\nRoll No.: 05");
-	printf("\nLab No.: 7d");
+	printf("\nLab No.: 7d\n");
 	return 0;
 }

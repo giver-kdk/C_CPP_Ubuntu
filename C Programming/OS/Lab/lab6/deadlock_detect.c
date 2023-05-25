@@ -100,6 +100,6 @@ int main()
 	}
 	printf("\nName: Giver Khadka");
 	printf("\nRoll No.: 05");
-	printf("\nLab No.: 6b");
+	printf("\nLab No.: 6b\n");
 	return 0;
 }

@@ -19,6 +19,6 @@ int main()
 	printf("Total head moment is %d", TotalHeadMoment);
 	printf("\nName: Giver Khadka");
 	printf("\nRoll No.: 05");
-	printf("\nLab No.: 10a");
+	printf("\nLab No.: 10a\n");
 	return 0;
 }

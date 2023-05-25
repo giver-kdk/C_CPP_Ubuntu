@@ -38,6 +38,6 @@ int main()
 	}
 	printf("\nName: Giver Khadka");
 	printf("\nRoll No.: 05");
-	printf("\nLab No.: 8c");
+	printf("\nLab No.: 8c\n");
 	return 0;
 }
