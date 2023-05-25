@@ -16,6 +16,8 @@ int main() {
         // Parent process
         printf("Parent process. PID: %d and Child PID: %d\n", getpid(), pid);
     }
-
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 2");
     return 0;
 }

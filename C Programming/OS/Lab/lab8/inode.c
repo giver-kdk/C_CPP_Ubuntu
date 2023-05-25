@@ -77,5 +77,8 @@ int main()
 	createFile(&fs, "file1.txt", 3);
 	createFile(&fs, "file2.txt", 2);
 	display(&fs);
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 8d");
 	return 0;
 }

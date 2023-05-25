@@ -16,6 +16,9 @@ int main()
 		TotalHeadMoment = TotalHeadMoment + abs(RQ[i] - initial);
 		initial = RQ[i];
 	}
-	printf("Total head moment is %d \n", TotalHeadMoment);
+	printf("Total head moment is %d", TotalHeadMoment);
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 10a");
 	return 0;
 }

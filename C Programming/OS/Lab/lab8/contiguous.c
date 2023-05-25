@@ -28,6 +28,12 @@ x:
 	printf("Do you want to enter more file(Yes - 1/No - 0)");
 	scanf("%d", &c);
 	if(c==1) goto x;
-	else exit(0);
+	else 
+	{
+		printf("\nName: Giver Khadka");
+		printf("\nRoll No.: 05");
+		printf("\nLab No.: 8a");
+		exit(0);
+	}
 	return 0;
 }

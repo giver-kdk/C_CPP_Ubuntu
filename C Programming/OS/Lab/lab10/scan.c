@@ -74,7 +74,10 @@ int main()
 	}
 	avgSeekTime = seek / (float)n;
 	printf("Total Seek Time= %d\n", seek);
-	printf("Average Seek Time= %f\n", avgSeekTime);
+	printf("Average Seek Time= %f", avgSeekTime);
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 10c");
 	return 0;
 }
 

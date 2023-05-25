@@ -27,6 +27,9 @@ int main()
 		RQ[index] = 1000;
 		count++;
 	}
-	printf("Total head movement is %d \n", TotalHeadMoment);
+	printf("Total head movement is %d", TotalHeadMoment);
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 10b");
 	return 0;
 }

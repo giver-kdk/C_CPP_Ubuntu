@@ -102,5 +102,8 @@ int main()
 	avTAT /= n;
 	avWT /= n;
 	printf("\nAverage Turnaround Time:%d", avTAT);
-	printf("\nAverage Waiting Time:%d\n", avWT);
+	printf("\nAverage Waiting Time:%d", avWT);
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 5c");
 }

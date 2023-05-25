@@ -85,6 +85,8 @@ int main()
 	int fn = 3;
 
 	applyLFU(pages, n, fn);
-
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 7e");
 	return 0;
 }

@@ -70,5 +70,8 @@ int main()
 		}
 	}
 	printf("Total head movement is %d", headMove);
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 10d");
 	return 0;
 }

@@ -22,6 +22,9 @@ int main()
 	printf("+ Process attached at %p\n", shared_memory);
 	printf("** Writting buffer into shared memory \n");
 	write_shared(shared_memory);
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 4a(Part1)");
 }
 
 void write_shared(void *shared_memory)

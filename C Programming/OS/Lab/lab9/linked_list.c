@@ -1,54 +1,100 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct freeSpace
+// struct Node structure for linked list
+struct  Node
 {
-	int address;
-	struct freeSpace *next;
+	int block_number;
+	struct  Node *next;
 };
 
-void addNode(struct freeSpace **head, int addr)
+// Function to add a new block to the linked list
+void addBlock(struct Node **head, int block_number)
 {
-	struct freeSpace *temp;
-	temp = (struct freeSpace *)malloc(sizeof(struct freeSpace *));
-	temp->address = addr;
-	temp->next = NULL;
-	if (head == NULL) *head = temp;
+	struct Node *newBlock = (struct Node *)malloc(sizeof(struct Node));
+	newBlock->block_number = block_number;
+	newBlock->next = NULL;
+
+	if (*head == NULL) *head = newBlock;
 	else
 	{
-		struct freeSpace *lastNode = *head;
-		while (lastNode->next != NULL)
+		struct Node *temp = *head;
+		while (temp->next != NULL)
 		{
-			lastNode = lastNode->next;
+			temp = temp->next;
 		}
-		lastNode->next = temp;
+		temp->next = newBlock;
 	}
+	printf("Block %d added.\n", block_number);
 }
-int main()
-{
-	struct freeSpace *head = NULL;
-	struct freeSpace *temp = head;
-	int start_add, length;
-	printf("Enter start address : ");
-	scanf("%d", &start_add);
-	printf("Enter the length:");
-	scanf("%d", &length);
-	// constructing linked list
-	for (int i = 0; i < length; i++)
-	{
-		if ((start_add + i) % 2 == 0 || (start_add + i) % 5 == 0)
-		{
-			addNode(&head, (start_add + i));
-		}
-	}
 
-	printf("Linked List [Assuming memory address exactly divisible by 2 and 5 is free] \n");
-	// printing bitmap
-	while (temp->next != NULL)
+// Function to remove a block from the linked list
+void removeBlock(struct Node **head, int block_number)
+{
+	if (*head == NULL)
 	{
-		printf("%d -> ", temp->address);
+		printf("Block %d not found. Removal failed.\n", block_number);
+		return;
+	}
+	struct Node *current = *head;
+	struct Node *previous = NULL;
+
+	while (current != NULL)
+	{
+		if (current->block_number == block_number)
+		{
+			if (previous == NULL) *head = current->next;
+			else previous->next = current->next;
+			free(current);
+			printf("Block %d removed.\n", block_number);
+			return;
+		}
+		previous = current;
+		current = current->next;
+	}
+	printf("Block %d not found. Removal failed.\n", block_number);
+}
+
+// Function to display the linked list
+void display(struct Node *head)
+{
+	printf("Linked List Contents: ");
+	struct Node *temp = head;
+	while (temp != NULL)
+	{
+		printf("%d ", temp->block_number);
 		temp = temp->next;
 	}
-	printf("NULL \n");
+	printf("\n");
+}
+
+// Function to free the memory occupied by the linked list
+void freeList(struct Node **head)
+{
+	struct Node *temp = *head;
+	while (temp != NULL)
+	{
+		struct Node *current = temp;
+		temp = temp->next;
+		free(current);
+	}
+	*head = NULL;
+	printf("Memory freed.\n");
+}
+
+int main()
+{
+	struct Node *head = NULL;
+	addBlock(&head, 1);
+	addBlock(&head, 2);
+	display(head);
+
+	removeBlock(&head, 2);
+	display(head);
+
+	freeList(&head);
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 9b");
 	return 0;
 }

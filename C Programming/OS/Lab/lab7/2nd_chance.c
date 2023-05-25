@@ -100,6 +100,9 @@ int main()
 
 	pg_fault = secondChance(ref_str, n, fn, frames);
 
-	printf("\nTotal No. of Page faults =%d\n", pg_fault);
+	printf("\nTotal No. of Page faults =%d", pg_fault);
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 7d");
 	return 0;
 }

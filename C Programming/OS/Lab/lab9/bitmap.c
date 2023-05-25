@@ -27,6 +27,8 @@ int main()
 	{
 		printf("%d", status[i]);
 	}
-	printf("\n");
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 9a");
 	return 0;
 }

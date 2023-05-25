@@ -62,6 +62,9 @@ int main()
 			initial = RQ[i];
 		}
 	}
-	printf("Total head movement is %d\n", headMove);
+	printf("Total head movement is %d", headMove);
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 10f");
 	return 0;
 }

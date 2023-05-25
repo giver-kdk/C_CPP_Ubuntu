@@ -42,6 +42,9 @@ int main()
                 printf(" - \t\t\t");  
         }  
     }  
-    printf("\nTotal Page Faults:\t%d\n", pageFaults);  
+    printf("\nTotal Page Faults:\t%d", pageFaults);  
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 7a");
     return 0;  
 }  

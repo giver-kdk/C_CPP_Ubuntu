@@ -36,5 +36,8 @@ int main()
 			printf("%s%40d%40d\n", name[j], start[j], length[j]);
 		}
 	}
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 8c");
 	return 0;
 }

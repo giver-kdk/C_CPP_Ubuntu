@@ -58,6 +58,9 @@ int main()
 		for (k = 0; k < m; k++)
 			printf(" %d", b[k]);
 	}
-	printf("\n No of page fault is:%d\n", c);
+	printf("\n No of page fault is:%d", c);
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 7b");
 	return 0;
 }

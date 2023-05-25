@@ -71,5 +71,8 @@ int main()
 			printf(" P%d -> ", ans[i]);
 		printf(" P%d ", ans[n - 1]);
 	}
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 6a");
 	return (0);
 }

@@ -19,6 +19,8 @@ int main() {
 
     printf("Main thread. Thread ID: %lu\n", pthread_self());
     pthread_join(thread, NULL);  									// Wait for the thread to finish
-
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 3");
     return 0;
 }

@@ -23,6 +23,9 @@ int main()
 
 	printf("** Reading buffer from shared memory \n");
 	read_shared(shared_memory);
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 4a(Part2)");
 }
 
 void read_shared(void *shared_memory)

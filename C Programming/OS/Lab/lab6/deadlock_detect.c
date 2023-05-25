@@ -96,7 +96,10 @@ int main()
 		}
 		printf("\n");
 	} else {
-		printf("\nNo deadlock detected.\n");
+		printf("\nNo deadlock detected.");
 	}
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No.: 05");
+	printf("\nLab No.: 6b");
 	return 0;
 }
