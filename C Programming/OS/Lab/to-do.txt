@@ -1,0 +1,6 @@
+1) FCFS
+2) SJF
+3) SRTF
+4) Round Robin
+5) Non-Preemptive Priority
+6) Preemptive Priority
