@@ -4,20 +4,19 @@
 
 int main() {
     pid_t pid = fork();			// Creates new process
-
     if (pid < 0) {				// Error in process creation
         fprintf(stderr, "Fork failed.\n");
         return 1;
     } else if (pid == 0) {		// Child process excecuted
         // Child process
         printf("Child process created. Child PID: %d\n", getpid());
+		printf("\nName: Giver Khadka");
+		printf("\nRoll No.: 05");
+		printf("\nLab No.: 2\n");
         exit(0);  				// Terminate child process
     } else {
         // Parent process
         printf("Parent process. PID: %d and Child PID: %d\n", getpid(), pid);
     }
-	printf("\nName: Giver Khadka");
-	printf("\nRoll No.: 05");
-	printf("\nLab No.: 2");
     return 0;
 }

@@ -21,6 +21,6 @@ int main() {
     pthread_join(thread, NULL);  									// Wait for the thread to finish
 	printf("\nName: Giver Khadka");
 	printf("\nRoll No.: 05");
-	printf("\nLab No.: 3");
+	printf("\nLab No.: 3\n");
     return 0;
 }

@@ -60,6 +60,7 @@ int main()
 	int startAT = minAT;
 	int time = minAT;
 	int currTime = time;
+	printf("GANTT CHART:\n");
 	while (notComplete == 1)
 	{
 		minBtPid = minimumBT(p, n, currTime);
@@ -90,14 +91,14 @@ int main()
 		}
 	}
 	// Display calculated output
-	printf("\nProcess\t\tCompletion Time\t\tTurnaround Time\t\tWaiting Time");
+	printf("\nProcess\tAT\tBT\tCT\tTAT\tWT");
 	for (i = 0; i < n; i++)
 	{
 		p[i].TAT = p[i].CT - p[i].AT;
 		p[i].WT = p[i].TAT - p[i].BT;
 		avTAT += p[i].TAT;
 		avWT += p[i].WT;
-		printf("\nP[%d]\t\t%d\t\t\t%d\t\t\t%d", i + 1, p[i].CT, p[i].TAT, p[i].WT);
+		printf("\nP[%d]\t%d\t%d\t%d\t%d\t%d", i + 1,p[i].AT, p[i].BT, p[i].CT, p[i].TAT, p[i].WT);
 	}
 	avTAT /= n;
 	avWT /= n;

@@ -24,7 +24,7 @@ int main()
 	write_shared(shared_memory);
 	printf("\nName: Giver Khadka");
 	printf("\nRoll No.: 05");
-	printf("\nLab No.: 4a(Part1)");
+	printf("\nLab No.: 4a(Part1)\n");
 }
 
 void write_shared(void *shared_memory)

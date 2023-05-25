@@ -53,6 +53,7 @@ int main()
 	int startAT = p[minAtPid].AT;					// Start time to run process 
 	int time = p[minAtPid].AT;
 	int currTime = time;
+	printf("GANTT CHART:\n");
 	while (notComplete == 1)
 	{
 		minAtPid = minimumAT(p, n);
@@ -83,14 +84,14 @@ int main()
 		}
 	}
 	// Display calculated output
-	printf("\nProcess\t\tCompletion Time\t\tTurnaround Time\t\tWaiting Time");
+	printf("\nProcess\tAT\tBT\tCT\tTAT\tWT");
 	for (i = 0; i < n; i++)
 	{
 		p[i].TAT = p[i].CT - p[i].AT;
 		p[i].WT = p[i].TAT - p[i].BT;
 		avTAT += p[i].TAT;
 		avWT += p[i].WT;
-		printf("\nP[%d]\t\t%d\t\t\t%d\t\t\t%d", i + 1, p[i].CT, p[i].TAT, p[i].WT);
+		printf("\nP[%d]\t%d\t%d\t%d\t%d\t%d", i + 1,p[i].AT, p[i].BT, p[i].CT, p[i].TAT, p[i].WT);
 	}
 	avTAT /= n;
 	avWT /= n;
@@ -98,5 +99,5 @@ int main()
 	printf("\nAverage Waiting Time:%d", avWT);
 	printf("\nName: Giver Khadka");
 	printf("\nRoll No.: 05");
-	printf("\nLab No.: 5a");
+	printf("\nLab No.: 5a\n");
 }

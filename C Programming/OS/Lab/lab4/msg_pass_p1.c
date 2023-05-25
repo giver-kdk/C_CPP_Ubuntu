@@ -46,5 +46,5 @@ int main()
 	}
 	printf("\nName: Giver Khadka");
 	printf("\nRoll No.: 05");
-	printf("\nLab No.: 4b(Part1)");
+	printf("\nLab No.: 4b(Part1)\n");
 }
