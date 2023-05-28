@@ -43,8 +43,8 @@ int main()
 		{
 			running = 0;
 		}
+		printf("\nName: Giver Khadka");
+		printf("\nRoll No.: 05");
+		printf("\nLab No.: 4b(Part1)\n");
 	}
-	printf("\nName: Giver Khadka");
-	printf("\nRoll No.: 05");
-	printf("\nLab No.: 4b(Part1)\n");
 }

@@ -1,4 +1,4 @@
-/* TOC Lab : Implement a PDA for L = { set of all strings over {0,1} such that  equal number of 0s and 1s , acceptance by final state */
+/* TOC Lab : Implement a PDA for L = { set of all strings over {0,1} such that equal number of as and bs, acceptance by final state */
 #include<stdio.h>
 #include<string.h>
 #define MAX 100

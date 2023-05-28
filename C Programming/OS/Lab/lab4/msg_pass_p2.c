@@ -22,13 +22,13 @@ int main()
 	{
 		msgrcv(msgid, (void *)&process_msg, BUFSIZ, msg_to_rec, 0);
 		printf("Data received: %s\n", process_msg.some_text);
+		printf("\nName: Giver Khadka");
+		printf("\nRoll No.: 05");
+		printf("\nLab No.: 4b(Part2)");
 		if (strncmp(process_msg.some_text, "end", 3) == 0)
 		{
 			running = 0;
 		}
 	}
 	msgctl(msgid, IPC_RMID, 0);
-	printf("\nName: Giver Khadka");
-	printf("\nRoll No.: 05");
-	printf("\nLab No.: 4b(Part2)");
 }

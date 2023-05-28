@@ -4,20 +4,23 @@ int main()
 {
 	// P0 , P1 , P2 , P3 , P4 are the Process names here
 	int n, m, i, j, k;
-	n = 5;						   // Number of processes
-	m = 3;						   // Number of resources
-	int alloc[5][3] = {{0, 1, 0},  // P0 // Allocation Matrix
-					   {2, 0, 0},  // P1
-					   {3, 0, 2},  // P2
-					   {2, 1, 1},  // P3
-					   {0, 0, 2}}; // P4
-	int max[5][3] = {{7, 5, 3},	   // P0 // MAX Matrix
-					 {3, 2, 2},	   // P1
-					 {9, 0, 2},	   // P2
-					 {2, 2, 2},	   // P3
-					 {4, 3, 3}};   // P4
+	int alloc[20][20], max[20][20];
 	int avail[3] = {3, 3, 2};	   // Available Resources
+	printf("\nEnter the number of processes: ");
+	scanf("%d", &n);
+	printf("\nEnter the number of resources: ");
+	scanf("%d", &m);
 	int f[n], ans[n], ind = 0;
+	printf("\nEnter the allocation matrix:\n");
+	for (i = 0; i < n; i++)
+		for (j = 0; j < m; j++)
+			scanf("%d", &alloc[i][j]);
+	printf("\nEnter the max matrix:\n");
+
+	for (i = 0; i < n; i++)
+		for (j = 0; j < m; j++)
+			scanf("%d", &max[i][j]);
+
 	for (k = 0; k < n; k++)
 	{
 		f[k] = 0;

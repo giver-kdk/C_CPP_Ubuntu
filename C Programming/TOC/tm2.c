@@ -1,16 +1,7 @@
-/* TOC Lab: Implement a TM for L = { set of all strings over {0,1} such that the string a^nb^2n. */
+/* TOC Lab: Implement a TM for L = { set of all strings over {0,1} such that the string is a^nb^2n}. */
 #include <stdio.h>
 
-enum states
-{
-	q0,
-	q1,
-	q2,
-	q3,
-	q4,
-	q5,
-	qr
-};
+enum states{q0,q1,q2,q3,q4,q5,qr};
 
 int main()
 {

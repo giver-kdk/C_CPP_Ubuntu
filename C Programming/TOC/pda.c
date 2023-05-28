@@ -7,7 +7,6 @@ void push(char ch);
 void pop();
 char get_stack_top();
 enum states delta(enum states, char, char);
-
 struct stack
 {
 	char symbols[MAX];
