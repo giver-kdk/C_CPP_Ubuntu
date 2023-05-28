@@ -41,9 +41,9 @@ int main()
 		c++;
 	}
 	if (curr_state == qf)
-		printf("\n The string %s is accepted.", input);
+		printf("\n The string %s is accepted.\n", input);
 	else
-		printf("\n The string %s is not accepted.", input);
+		printf("\n The string %s is not accepted.\n", input);
 
 	return 0;
 }

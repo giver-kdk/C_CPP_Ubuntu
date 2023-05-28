@@ -90,9 +90,9 @@ int main()
 	}//end of while loop
 
  if(curr_state == q4)
-	   printf("\n The string is accepted.");
+	   printf("\n The string is accepted.\n");
  else 
- 	   printf("\n The string is not accepted.");	    
+ 	   printf("\n The string is not accepted.\n");	    
 		
    return 0;			
 }
