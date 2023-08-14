@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
 #include <time.h>
 
 //This program prints random numbers between 10 and 20.
