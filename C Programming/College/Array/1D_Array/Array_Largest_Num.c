@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <conio.h>
 
 /*This program prints the largest number inside array*/
 void main()
@@ -21,5 +20,4 @@ void main()
         }
     }
     printf("The largest number is %d", largest);
-    getchar();
 }
