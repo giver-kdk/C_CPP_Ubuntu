@@ -24,7 +24,7 @@ int partition(int a[50], int p, int r)
 }
 int randomized_partition(int a[50], int p, int r)
 {
-
+	// Generate random number within range of 'p' and 'r'
     int k = (rand() % (r - p + 1)) + p;
     int temp = a[p];
     a[p] = a[k];
@@ -43,20 +43,22 @@ void randomized_qs(int a[50], int p, int r)
 int main()
 {
     srand(time(0));
-    int i, a[50];
-    printf("Enter 5 elements of array: ");
-    for(i = 0; i < 5; i++)
+    int i, n, a[50];
+	printf("Enter number of elements: ");
+	scanf("%d", &n);
+    printf("Enter %d elements of array: ", n);
+    for(i = 0; i < n; i++)
     {
         scanf("%d", &a[i]);
     }
     printf("\nBefore sorting: ");
-    for(i = 0; i < 5; i++)
+    for(i = 0; i < n; i++)
     {
         printf("%d\t", a[i]);
     }
-    randomized_qs(a, 0, 4);
+    randomized_qs(a, 0, n - 1);
     printf("\nAfter sorting: ");
-    for(i = 0; i < 5; i++)
+    for(i = 0; i < n; i++)
     {
         printf("%d\t", a[i]);
     }
