@@ -5,8 +5,8 @@ int heapsize = 0;
 void max_heapify(int a[], int i)
 {
 	int largest = i;
-	int L = 2 * i + 1;
-    int R = 2 * i + 2;
+	int L = 2 * i + 1;					// Get left node
+    int R = 2 * i + 2;					// Get right node
 	if(L < heapsize && a[L] > a[largest])
 	{
 		largest = L;
