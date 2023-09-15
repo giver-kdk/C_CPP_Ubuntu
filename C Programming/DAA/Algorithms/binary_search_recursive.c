@@ -4,23 +4,16 @@
 
 int binary_search(int a[50], int l, int h, int key)
 {
-	int mid;
-	if (l > h)
+	if (l <= h)
 	{
-		printf("\nSearch Failure");
-		return -1;
+		int mid = (l + h) / 2;
+		if (a[mid] == key) return (mid + 1);
+		else if(a[mid] < key)
+			return binary_search(a, mid + 1, h, key);
+		else if (a[mid] > key)
+			return binary_search(a, l, mid - 1, key);
 	}
-	mid = (l + h) / 2;
-	if (key > a[mid])
-		return binary_search(a, mid + 1, h, key);
-	else if (key < a[mid])
-		return binary_search(a, l, mid - 1, key);
-	else
-	{
-		printf("\nSearch Success");
-		// Convert index (mid) into position
-		return (mid + 1);
-	}
+	else return -1;
 }
 
 int main()
@@ -30,7 +23,7 @@ int main()
 	scanf("%d", &n);
 	l = 0;
 	h = n - 1;
-	printf("\nEnter array elements: ");
+	printf("\nEnter sorted array elements: ");
 	for (i = 0; i < n; i++)
 		scanf("%d", &a[i]);
 	printf("\nEnter the key: ");
