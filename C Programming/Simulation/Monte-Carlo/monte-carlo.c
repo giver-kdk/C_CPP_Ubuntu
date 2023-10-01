@@ -6,9 +6,7 @@ int main()
 {
     int size;
     float m = 0, n = 0, x, y, pi;
-
-	srand(time(0));
-    rand();
+    srand(time(0));
 
     printf("Enter the number of random samples: ");
     scanf("%d", &size);
