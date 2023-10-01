@@ -15,6 +15,7 @@ int main()
 
     for(int i = 0; i < size; i++)
     {
+	// Random floating value between 0 and 1
         x = (double)rand() / RAND_MAX ;
         y = (double)rand() / RAND_MAX ;
         if((x*x + y*y) <= 1)
