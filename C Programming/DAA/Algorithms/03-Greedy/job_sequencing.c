@@ -16,7 +16,7 @@ int main()
         printf("Enter job deadline: ");
         scanf("%d", &d[i]);
     }
-    job_seq(jobs, n, k);
+    job_seq(d, p, n, k);
     
 }
 void job_seq(int d[], int p[], int n, int k)
@@ -33,7 +33,7 @@ void job_seq(int d[], int p[], int n, int k)
         {
             r = r - 1;
         }
-        if(d[p[r] <= d[i] && d[i] > r)
+        if(d[p[r]] <= d[i] && d[i] > r)
         {
             for(l = k; l >= r + 1; l--)
             {
