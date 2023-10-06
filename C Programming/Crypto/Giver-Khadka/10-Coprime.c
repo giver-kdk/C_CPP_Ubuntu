@@ -29,5 +29,7 @@ int main()
 		else printf("\nNumbers are not Co-Prime");
 		printf("\n");
 	}
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No: 05\n");
     return 0;
 }

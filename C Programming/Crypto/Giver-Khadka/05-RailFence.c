@@ -29,12 +29,17 @@ char *plainTextToCipherText(char plainText[], int n)
 }
 int main()
 {
-	int n;
-	char plainText[100];
-	printf("Enter the plain text : ");
-	scanf("%s", plainText);
-	printf("Enter the value of n : ");
-	scanf("%d", &n);
-	printf("%s\n", plainTextToCipherText(plainText, n));
+	for(int i = 0; i < 3; i++)
+	{
+		int n;
+		char plainText[100];
+		printf("Enter the plain text : ");
+		scanf("%s", plainText);
+		printf("Enter the value of n : ");
+		scanf("%d", &n);
+		printf("Cipher Text is: %s\n", plainTextToCipherText(plainText, n));
+	}
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No: 05\n");
 	return 0;
 }

@@ -27,5 +27,7 @@ int main()
 		int gcd = ext_euc(a, m, &x, &y);
 		printf("GCD of %d mod %d using Extended Euclidean: %d\n", a, m, gcd);
 	}
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No: 05\n");
 	return 0;
 }

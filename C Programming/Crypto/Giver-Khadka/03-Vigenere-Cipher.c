@@ -37,5 +37,7 @@ int main()
 			printf("%c", 65 + (value % 26));
 		}
 	}
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No: 05\n");
 	return 0;
 }

@@ -12,4 +12,6 @@ int main()
 		if(count == 2) printf("%d is a Prime Number\n", num);
 		else printf("%d is not a Prime Number\n", num);
 	}
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No: 05\n");
 }

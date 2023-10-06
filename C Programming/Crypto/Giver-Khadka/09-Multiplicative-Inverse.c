@@ -39,5 +39,7 @@ int main()
 		int inv = mul_inverse(a, m);
 		if (inv != -1) printf("Multiplicative inverse of %d mod %d is %d\n", a, m, inv);
 	}
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No: 05\n");
 	return 0;
 }

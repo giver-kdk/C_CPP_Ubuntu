@@ -23,5 +23,7 @@ int main()
 		decrypt[i] = '\0';
 		printf("\n Decrypted message is: %s\n", decrypt);
 	}
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No: 05\n");
 	return 0;
 }

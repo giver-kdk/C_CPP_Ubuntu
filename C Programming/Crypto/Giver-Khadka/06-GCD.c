@@ -17,11 +17,14 @@ void gcd(int a, int b)
 }
 int main()
 {
-    int n1, n2;
-    
-    printf("Enter two positive integers: ");
-    scanf("%d %d",&n1,&n2);
-
-	gcd(n1, n2);
+	for(int i = 0; i < 3; i++)
+	{
+    	int n1, n2;
+		printf("\nEnter two positive integers: ");
+		scanf("%d %d",&n1,&n2);
+		gcd(n1, n2);
+	}
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No: 05\n");
     return 0;
 }

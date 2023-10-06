@@ -28,5 +28,7 @@ int main()
 
 		printf("totient(%d) = %d\n", n, totient(n));
 	}
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No: 05\n");
     return 0;
 }

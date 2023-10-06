@@ -68,5 +68,7 @@ int main(){
 		if (miller(num, iteration)) printf("\n%d is inconclusive\n", num);
 		else printf("\n%d is composite\n", num);
     }
+	printf("\nName: Giver Khadka");
+	printf("\nRoll No: 05\n");
     return 0;
 }
