@@ -17,15 +17,15 @@ void print_LCS(int m, char b[][m], char X[], int i, int j)
 int main()
 {
     int m, n;
-    printf("Enter the length of sequence X and Y:\n");
+    printf("Enter the length of sequence X and Y: ");
     scanf("%d %d", &m, &n);
     char X[m], Y[n];
-    printf("Enter the characters for the sequence X: \n");
+    printf("Enter the characters for the sequence X: ");
     for(int i = 0; i < m; i++){
         printf("X[%d]: ", i + 1);
         scanf("%s", &X[i]);
     }
-    printf("Enter the characters for the sequence Y: \n");
+    printf("Enter the characters for the sequence Y: ");
     for(int i = 0; i < n; i++){
         printf("Y[%d]: ", i + 1);
         scanf("%s", &Y[i]);

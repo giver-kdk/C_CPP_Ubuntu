@@ -8,9 +8,9 @@ int main()
     int wt[n], v[n];
     printf("\nEnter the weight and value corresponding to the item\n");
     for(int i = 0; i < n; i++){
-        printf("\nw[%d]: ", i + 1);
+        printf("w[%d]: ", i + 1);
         scanf("%d", &wt[i]);
-        printf("\nv[%d]: ", i + 1);
+        printf("v[%d]: ", i + 1);
         scanf("%d", &v[i]);
     }
     printf("\nEnter the capacity of knapsack: ");

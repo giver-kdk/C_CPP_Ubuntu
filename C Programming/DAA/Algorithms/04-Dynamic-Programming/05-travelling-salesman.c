@@ -29,5 +29,6 @@ int main() {
     for (int i = 1; i <= n; i++)
         ans = min(ans, fun(i, (1 << (n + 1)) - 1) + dist[i][1]);
     printf("The cost of the most efficient tour = %d", ans);
+	printf("\nName: Giver Khadka\tRoll No: 05\n");
     return 0;
 }
