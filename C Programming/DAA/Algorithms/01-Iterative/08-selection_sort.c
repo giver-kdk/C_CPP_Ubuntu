@@ -8,6 +8,7 @@ Step 4 – assign the second element as min
 Step 5 − Repeat the process until we get a sorted array.*/
 #include <stdio.h>
 #define size 5
+int comparison = 0, swap = 0;
 
 int main()
 {
@@ -23,11 +24,13 @@ int main()
         min_index = i;                  //Resets the value of 'min_index' on every iteration
         for(j = i; j < size - 1; j++)
         {
+			comparison++;
             if(array[min_index] > array[j + 1])
             {
                 min_index = j + 1;              //Assigns the index number of small number
             }
         }
+		swap++;
         temp = array[min_index];
         array[min_index] = array[i];
         array[i] = temp;                    //Swaps the 'i'th and 'min_index"th elements
@@ -37,4 +40,7 @@ int main()
     {
         printf("%d\t", array[i]);
     }
+	printf("\nTotal no. of comparisons: %d", comparison);
+	printf("\nTotal no. of swaps: %d", swap);
+	printf("\nName: Giver Khadka\tRoll No: 05\n");
 }

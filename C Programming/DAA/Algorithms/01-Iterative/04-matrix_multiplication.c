@@ -63,6 +63,7 @@ int main()
         }
 
     }
+	printf("\nName: Giver Khadka\tRoll No: 05\n");
 }
 int multiply_matrix(int a[10][10], int b[10][10], int product[10][10], int row, int col, int row_col)
 {

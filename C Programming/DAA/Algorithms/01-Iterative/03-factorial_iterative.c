@@ -15,5 +15,6 @@ int main()
 	printf("Enter a number: ");
 	scanf("%d", &n);
     printf("The Factorial of %d is %d", n, factorial(n));
+	printf("\nName: Giver Khadka\tRoll No: 05\n");
     return 0;
 }

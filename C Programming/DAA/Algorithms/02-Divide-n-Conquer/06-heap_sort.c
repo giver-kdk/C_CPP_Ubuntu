@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-int heapsize = 0;
+int heapsize = 0, comparison = 0, swap = 0;
 
 void max_heapify(int a[], int i)
 {
@@ -15,8 +15,10 @@ void max_heapify(int a[], int i)
 	{
 		largest = R;
 	}
+	comparison++;
 	if(largest != i)
 	{
+		swap++;
 		int temp = a[i];
 		a[i] = a[largest];
 		a[largest] = temp;
@@ -40,6 +42,7 @@ void heap_sort(int a[], int n)
 	build_maxheap(a, n);
 	for(i = n - 1; i >= 0; i--)
 	{
+		swap++;
 		int temp = a[i];
 		a[i] = a[0];
 		a[0] = temp;
@@ -71,5 +74,7 @@ int main()
 	{
 		printf("%d\t", array[i]);
 	}
-	printf("\n");
+	printf("\nTotal no. of comparisons: %d", comparison);
+	printf("\nTotal no. of swaps: %d", swap);
+	printf("\nName: Giver Khadka\tRoll No: 05\n");
 }

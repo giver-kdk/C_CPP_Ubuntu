@@ -1,12 +1,14 @@
 // NOTE: Here, the array is assumed to be already sorted
 #include <stdio.h>
 #include <math.h>
+int comparison = 0;
 
 int binary_search(int a[50], int l, int h, int key)
 {
 	if (l <= h)
 	{
 		int mid = (l + h) / 2;
+		comparison++;
 		if (a[mid] == key) return (mid + 1);
 		else if(a[mid] < key)
 			return binary_search(a, mid + 1, h, key);
@@ -30,4 +32,6 @@ int main()
 	scanf("%d", &key);
 	loc = binary_search(a, l, h, key);
 	printf("\nRequired Location: %d\n", loc);
+	printf("\nTotal no. of comparisons: %d", comparison);
+	printf("\nName: Giver Khadka\tRoll No: 05\n");
 }

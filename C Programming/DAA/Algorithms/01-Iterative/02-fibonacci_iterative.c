@@ -7,6 +7,7 @@ void main()
     printf("Enter a number for Fibonacce Series: ");
     scanf("%d", &number);
     print_fibonacce(number);
+	printf("\nName: Giver Khadka\tRoll No: 05\n");
 }
 void print_fibonacce(int num)
 {

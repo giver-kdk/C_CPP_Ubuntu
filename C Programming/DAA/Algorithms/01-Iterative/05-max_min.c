@@ -24,4 +24,5 @@ void main()
 	}
 	printf("The max number is %d\n", max);
 	printf("The min number is %d\n", min);
+	printf("\nName: Giver Khadka\tRoll No: 05\n");
 }

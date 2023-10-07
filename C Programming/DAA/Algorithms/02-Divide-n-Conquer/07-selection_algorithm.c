@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
-#include <stdlib.h>
-#include <time.h>
+int comparison = 0, swap = 0;
+
 
 int partition(int a[50], int l, int r)
 {
@@ -9,36 +9,31 @@ int partition(int a[50], int l, int r)
     int i = l, j;
     for(j = i + 1; j <= r; j++)
     {
+		comparison++;
         if(a[j] <= pivot)
         {
             i++;
+			swap++;
             int temp = a[i];
             a[i] = a[j];
             a[j] = temp;
         }
     }
+	swap++;
     int temp = a[l];
     a[l] = a[i];
     a[i] = temp;
     return i;
 }
-int randomized_partition(int a[50], int p, int r)
+int selection(int a[], int p, int r, int i)
 {
-	// Generate random number within range of 'p' and 'r'
-    int k = (rand() % (r - p + 1)) + p;
-    int temp = a[p];
-    a[p] = a[k];
-    a[k] = temp;
-    return partition(a, p, r);
-}
-int r_selection(int a[], int p, int r, int i)
-{
+	comparison++;
 	if(p == r) return a[p];
-	int q = randomized_partition(a, p, r);
+	int q = partition(a, p, r);
 	int k = q - p + 1;
 	if(i == k) return a[q];
-	if(i < k) return r_selection(a, p, q - 1, i);
-	if(i > k) return r_selection(a, q + 1, r, i - k);
+	if(i < k) return selection(a, p, q - 1, i);
+	if(i > k) return selection(a, q + 1, r, i - k);
 }
 
 int main()
@@ -54,10 +49,12 @@ int main()
 	}
 	l = 0;
 	r = num - 1;
-	printf("Enter value of i for r_selectionion: ");
+	printf("Enter value of i for selectionion: ");
 	scanf("%d", &i);
 
-	result = r_selection(a, l, r, i);
-	printf("\n%d th smallest r_selectioned element is: %d", i, result);
-	printf("\n");
+	result = selection(a, l, r, i);
+	printf("\n%d th smallest selectioned element is: %d", i, result);
+	printf("\nTotal no. of comparisons: %d", comparison);
+	printf("\nTotal no. of swaps: %d", swap);
+	printf("\nName: Giver Khadka\tRoll No: 05\n");
 }

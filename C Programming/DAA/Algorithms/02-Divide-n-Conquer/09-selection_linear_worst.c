@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-
+int comparison = 0, swap = 0;
 
 int partition(int a[50], int l, int r)
 {
@@ -8,14 +8,17 @@ int partition(int a[50], int l, int r)
     int i = l, j;
     for(j = i + 1; j <= r; j++)
     {
+		comparison++;
         if(a[j] <= pivot)
         {
             i++;
+			swap++;
             int temp = a[i];
             a[i] = a[j];
             a[j] = temp;
         }
     }
+	swap++;
     int temp = a[l];
     a[l] = a[i];
     a[i] = temp;
@@ -29,8 +32,10 @@ int findMedian(int a[], int l, int r) {
     {
         for(int j = 0; j < r - i; j++)
         {
+			comparison++;
             if(a[j] > a[j + 1])         
             {
+				swap++;
                 int temp = a[j];
                 a[j] = a[j + 1];
                 a[j + 1] = temp;
@@ -66,12 +71,14 @@ int select_linear(int a[], int p, int r, int i)
             }
         }
 		// Take a[q] to lowest index to make it a pivot
+		swap++;
 		int temp = a[p];
 		a[p] = a[q];
 		a[q] = temp;
 
 		q = partition(a, p, r);
 		int k = q - p + 1;
+		comparison++;
 		if(i == k) return a[q];
 		if(i < k) return select_linear(a, p, q - 1, i);
 		if(i > k) return select_linear(a, q + 1, r, i - k);
@@ -96,5 +103,7 @@ int main()
 
 	result = select_linear(a, l, r, i);
 	printf("\n%d th smallest select_lineared element is: %d", i, result);
-	printf("\n");
+	printf("\nTotal no. of comparisons: %d", comparison);
+	printf("\nTotal no. of swaps: %d", swap);
+	printf("\nName: Giver Khadka\tRoll No: 05\n");
 }

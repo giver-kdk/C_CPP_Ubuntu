@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+int comparison = 0, swap = 0;
 
 int partition(int a[50], int p, int r)
 {
@@ -9,14 +9,17 @@ int partition(int a[50], int p, int r)
     int i = p, j;
     for(j = i + 1; j <= r; j++)
     {
+		comparison++;
         if(a[j] <= pivot)
         {
+			swap++;
             i++;
             int temp = a[i];
             a[i] = a[j];
             a[j] = temp;
         }
     }
+	swap++;
     int temp = a[p];
     a[p] = a[i];
     a[i] = temp;
@@ -26,6 +29,7 @@ int randomized_partition(int a[50], int p, int r)
 {
 	// Generate random number within range of 'p' and 'r'
     int k = (rand() % (r - p + 1)) + p;
+	swap++;
     int temp = a[p];
     a[p] = a[k];
     a[k] = temp;
@@ -35,6 +39,7 @@ void randomized_qs(int a[50], int p, int r)
 {
     if(p < r)
     {
+		comparison++;
         int q = randomized_partition(a, p, r);
         randomized_qs(a, p, q - 1);
         randomized_qs(a, q + 1, r);
@@ -62,4 +67,7 @@ int main()
     {
         printf("%d\t", a[i]);
     }
+	printf("\nTotal no. of comparisons: %d", comparison);
+	printf("\nTotal no. of swaps: %d", swap);
+	printf("\nName: Giver Khadka\tRoll No: 05\n");
 }

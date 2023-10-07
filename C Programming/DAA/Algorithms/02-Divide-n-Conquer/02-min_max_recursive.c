@@ -1,4 +1,5 @@
 #include <stdio.h>
+int comparison = 0;
 
 void min_max_algo(int a[], int l, int r, int* min, int* max);
 
@@ -14,14 +15,16 @@ int main()
     int l = 0, r = n - 1;
     min_max_algo(a, l, r, &min, &max);
 
-    printf("The min number is %d\n", min);
-    printf("The max number is %d\n", max);
-
+    printf("\nThe min number is %d", min);
+    printf("\nThe max number is %d", max);
+	printf("\nTotal no. of comparisons: %d", comparison);
+	printf("\nName: Giver Khadka\tRoll No: 05\n");
     return 0; 
 }
 
 void min_max_algo(int a[], int l, int r, int* min, int* max)
 {
+	comparison++;
     if (l == r)
     {
         *min = a[l]; 			

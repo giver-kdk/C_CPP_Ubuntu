@@ -1,5 +1,6 @@
 {
   "files.associations": {
+	"*.jsx": "javascriptreact",
 	"ostream": "cpp",
 	"*.tcc": "cpp",
 	"string": "cpp",
@@ -52,7 +53,8 @@
 	"math.h": "c",
 	"qapplication": "cpp",
 	"cmake.cmakePath": "/home/giver_kdk/Qt/Tools/CMake/bin",
-	"stdlib.h": "c"
+	"stdlib.h": "c",
+	"stdio_ext.h": "c"
 },
   "cmake.configureOnOpen": false
 }

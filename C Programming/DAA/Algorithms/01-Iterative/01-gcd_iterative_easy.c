@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 void gcd(int a, int b)
 {
 	if(a == 0) printf("%d is gcd", b);
@@ -18,10 +17,9 @@ void gcd(int a, int b)
 int main()
 {
     int n1, n2;
-    
     printf("Enter two positive integers: ");
     scanf("%d %d",&n1,&n2);
-
 	gcd(n1, n2);
+	printf("\nName: Giver Khadka\tRoll No: 05\n");
     return 0;
 }

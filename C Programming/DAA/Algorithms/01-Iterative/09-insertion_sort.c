@@ -1,4 +1,5 @@
 #include <stdio.h>
+int comparison = 0, swap = 0;
 
 void insertion_sort(int a[], int n);
 int main()
@@ -23,7 +24,9 @@ int main()
     {
         printf("%d\t", a[i]);
     }
-	printf("\n");
+	printf("\nTotal no. of comparisons: %d", comparison);
+	printf("\nTotal no. of swaps: %d", swap);
+	printf("\nName: Giver Khadka\tRoll No: 05\n");
 	return 0;
 }
 
@@ -34,8 +37,10 @@ void insertion_sort(int a[], int n)
 	{
 		j = i - 1;
 		temp = a[i];
+		comparison++;
 		while(temp < a[j] && j >= 0)
 		{
+			swap++;
 			a[j + 1] = a[j];
 			j--;
 		}

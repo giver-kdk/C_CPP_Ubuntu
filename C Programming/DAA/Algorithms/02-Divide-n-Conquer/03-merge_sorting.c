@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #define INFINITE 9999
+int comparison = 0;
 
 void merge(int a[], int l, int q, int r)
 {
@@ -19,6 +20,7 @@ void merge(int a[], int l, int q, int r)
 	j = 0;
 	k = l;
     while (i < n1 && j < n2) {
+		comparison++;
         if (L[i] <= R[j]) {
             a[k] = L[i];
             i++;
@@ -31,6 +33,7 @@ void merge(int a[], int l, int q, int r)
     }
     // Copy the elements of L[]
 	while (i < n1) {
+		comparison++;
         a[k] = L[i];
         i++;
         k++;
@@ -38,6 +41,7 @@ void merge(int a[], int l, int q, int r)
   
     // Copy the remaining elements of R[], if there are any
     while (j < n2) {
+		comparison++;
         a[k] = R[j];
         j++;
         k++;
@@ -46,6 +50,7 @@ void merge(int a[], int l, int q, int r)
 void merge_sort(int a[], int l, int r)
 {
 	int q;
+	comparison++;
 	if(l < r)
 	{
 		q = (l + r) / 2;
@@ -80,5 +85,6 @@ int main()
 	{
 		printf("%d\t", array[i]);
 	}
-	printf("\n");
+	printf("\nTotal no. of comparisons: %d", comparison);
+	printf("\nName: Giver Khadka\tRoll No: 05\n");
 }

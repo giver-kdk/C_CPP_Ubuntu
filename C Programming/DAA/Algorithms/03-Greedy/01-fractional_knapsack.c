@@ -55,4 +55,5 @@ int main()
 	}
 	if(capacity > 0) p = p + obj[i].p * (capacity / obj[i].w);
 	printf("Profit is %.2f", p);
+	printf("\nName: Giver Khadka\tRoll No: 05\n");
 }

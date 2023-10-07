@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-
+int comparison = 0, swap = 0;
 
 int partition(int a[50], int l, int r)
 {
@@ -8,14 +8,17 @@ int partition(int a[50], int l, int r)
     int i = l, j;
     for(j = i + 1; j <= r; j++)
     {
+		comparison++;
         if(a[j] <= pivot)
         {
+			swap++;
             i++;
             int temp = a[i];
             a[i] = a[j];
             a[j] = temp;
         }
     }
+	swap++;
     int temp = a[l];
     a[l] = a[i];
     a[i] = temp;
@@ -26,6 +29,7 @@ void quick_sort(int a[], int l, int r)
 	int q;
 	if(l < r)
 	{
+		comparison++;
 		q = partition(a, l, r);
 		quick_sort(a, l, q - 1);
 		quick_sort(a, q + 1, r);
@@ -57,5 +61,7 @@ int main()
 	{
 		printf("%d\t", array[i]);
 	}
-	printf("\n");
+	printf("\nTotal no. of comparisons: %d", comparison);
+	printf("\nTotal no. of swaps: %d", swap);
+	printf("\nName: Giver Khadka\tRoll No: 05\n");
 }

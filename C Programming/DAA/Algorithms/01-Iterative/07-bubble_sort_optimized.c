@@ -1,5 +1,6 @@
 /*This program sorts the array elements in ascending order using bubble sorting(Clz)*/
 #include <stdio.h>
+int comparison = 0, swap = 0;
 
 int main()
 {
@@ -19,8 +20,10 @@ int main()
 		int count = 0;
         for(j = 0; j < (n - 1) - i; j++)
         {
+			comparison++;
             if(array[j] > array[j + 1])         //if(array[j]<array[j+1]) for Descending
             {
+				swap++;
                 temp = array[j];
                 array[j] = array[j + 1];
                 array[j + 1] = temp;
@@ -35,4 +38,7 @@ int main()
     {
         printf("%d\t", array[i]);
     }
+	printf("\nTotal no. of comparisons: %d", comparison);
+	printf("\nTotal no. of swaps: %d", swap);
+	printf("\nName: Giver Khadka\tRoll No: 05\n");
 }
