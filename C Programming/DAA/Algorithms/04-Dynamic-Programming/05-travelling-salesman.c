@@ -1,65 +1,33 @@
-#include<stdio.h>
-int ary[10][10],completed[10],n,cost=0;
-int least(int c)
-{
-	int i,nc=999;
-	int min=999,kmin;
-	for(i=0;i < n;i++)
-	{
-		if((ary[c][i]!=0)&&(completed[i]==0))
-			if(ary[c][i]+ary[i][c] < min)
-			{
-				min=ary[i][0]+ary[c][i];
-				kmin=ary[c][i];
-				nc=i;
-			}
-	}
-	if(min!=999)
-		cost+=kmin;
-	return nc;
+#include <stdio.h>
+#define n 4				// No. of nodes
+#define MAX 1000000
+int dist[n + 1][n + 1] = {
+    { 0, 0, 0, 0, 0 },    
+	{ 0, 0, 6, 1, 3 },
+    { 0, 4, 0, 2, 1 }, 
+	{ 0, 1, 2, 0, 8 },
+    { 0, 3, 1, 7, 0 },
+};
+// Memoization for top-down recursion
+int memo[n + 1][1 << (n + 1)];
+int min(int a, int b) {
+    return a < b ? a : b;
 }
-void takeInput()
-{
-	int i,j;
-	printf("Enter the number of villages: ");
-	scanf("%d",&n);
-	printf("\nEnter the Cost Matrix\n");
-	for(i=0;i < n;i++)
-	{
-		printf("\nEnter Elements of Row: %d\n",i+1);
-		for( j=0;j < n;j++)
-			scanf("%d",&ary[i][j]);
-		completed[i]=0;
-	}
-	printf("\n\nThe cost list is:");
-	for( i=0;i < n;i++)
-	{
-		printf("\n");
-		for(j=0;j < n;j++)
-			printf("\t%d",ary[i][j]);
-	}
+int fun(int i, int mask) {
+    // Base case
+    if (mask == ((1 << i) | 3)) return dist[1][i];
+    // Memoization
+    if (memo[i][mask] != 0) return memo[i][mask];
+    int res = MAX; // Result of this sub-problem
+    for (int j = 1; j <= n; j++)
+        if ((mask & (1 << j)) && j != i && j != 1)
+            res = min(res, fun(j, mask & (~(1 << i))) + dist[j][i]);
+    return memo[i][mask] = res;
 }
-void mincost(int city)
-{
-	int i,ncity;
-	completed[city]=1;
-	printf("%d--->",city+1);
-	ncity=least(city);
-	if(ncity==999)
-	{
-		ncity=0;
-		printf("%d",ncity+1);
-		cost+=ary[city][ncity];
-		return;
-	}
-	mincost(ncity);
-}
-int main()
-{
-	takeInput();
-	printf("\n\nThe Path is:\n");
-	mincost(0); //passing 0 because starting vertex
-	printf("\nMinimum cost is %d\n ",cost);
-	printf("\nName: Giver Khadka\tRoll No: 05\n");
-	return 0;
+int main() {
+    int ans = MAX;
+    for (int i = 1; i <= n; i++)
+        ans = min(ans, fun(i, (1 << (n + 1)) - 1) + dist[i][1]);
+    printf("The cost of the most efficient tour = %d", ans);
+    return 0;
 }
